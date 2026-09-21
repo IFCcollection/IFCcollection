@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IFC Collection | Fashion for Everyone</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fffaf7;
+            color: #2b0a12;
+        }
+
+        /* HEADER */
+        header {
+            background: #5b1020;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #d4af37;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            display: block;
+            color: white;
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-top: 3px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 520px;
+            background: linear-gradient(
+                rgba(91,16,32,0.92),
+                rgba(91,16,32,0.82)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            color: #d4af37;
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .hero h2 {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #f8e9c8;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            margin: 5px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .gold-btn {
+            background: #d4af37;
+            color: #3d0a16;
+        }
+
+        .gold-btn:hover {
+            transform: translateY(-3px);
+            background: #f0cc55;
+        }
+
+        .outline-btn {
+            border: 2px solid #d4af37;
+            color: #d4af37;
+        }
+
+        .outline-btn:hover {
+            background: #d4af37;
+            color: #3d0a16;
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 50px 7%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(91,16,32,0.08);
+            border-top: 3px solid #d4af37;
+        }
+
+        .feature .icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .feature h3 {
+            color: #5b1020;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #666;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 60px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            color: #5b1020;
+            font-size: 34px;
+        }
+
+        .section-title p {
+            color: #777;
+            margin-top: 8px;
+        }
+
+        /* CATEGORIES */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category {
+            background: #5b1020;
+            color: white;
+            min-height: 160px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #d4af37;
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            background: #75172c;
+        }
+
+        .category h3 {
+            color: #d4af37;
+            font-size: 22px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+
+        .product-image {
+            height: 220px;
+            background: #eee2e4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5b1020;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            color: #5b1020;
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #5b1020;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .contact h2 {
+            color: #d4af37;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            margin: 10px 0;
+            font-size: 17px;
+        }
+
+        .contact strong {
+            color: #d4af37;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #350914;
+            color: #ddd;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        footer strong {
+            color: #d4af37;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                min-height: 470px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero h2 {
+                font-size: 23px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 45px 5%;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .categories {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .category {
+                min-height: 130px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            IFC COLLECTION
+            <span>FASHION FOR EVERYONE</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>IFC COLLECTION</h1>
+
+            <h2>Fashion for Everyone</h2>
+
+            <p>
+                Quality Fashion at Reasonable Price
+                <br>
+                Men • Women • Kids • Shoes
+            </p>
+
+            <a href="#categories" class="btn gold-btn">
+                Shop Now
+            </a>
+
+            <a href="https://wa.me/9779824260099" class="btn outline-btn">
+                WhatsApp Order
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features">
+
+        <div class="feature">
+            <div class="icon">🚚</div>
+            <h3>All Nepal Delivery</h3>
+            <p>Delivery available all over Nepal.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">💵</div>
+            <h3>Cash on Delivery</h3>
+            <p>COD available for your convenience.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">✨</div>
+            <h3>Quality Fashion</h3>
+            <p>Trendy fashion at reasonable prices.</p>
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="section" id="categories">
+
+        <div class="section-title">
+            <h2>Shop By Category</h2>
+            <p>Find your favourite fashion collection</p>
+        </div>
+
+        <div class="categories">
+
+            <div class="category">
+                <h3>👔<br>Men</h3>
+            </div>
+
+            <div class="category">
+                <h3>👗<br>Women</h3>
+            </div>
+
+            <div class="category">
+                <h3>🧒<br>Kids</h3>
+            </div>
+
+            <div class="category">
+                <h3>👟<br>Shoes</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+    <section class="section" id="products">
+
+        <div class="section-title">
+            <h2>New Arrivals</h2>
+            <p>Latest fashion available at IFC Collection</p>
+        </div>
+
+        <div class="products">
+
+            <div class="product">
+                <div class="product-image">
+                    PRODUCT IMAGE
+                </div>
+
+                <div class="product-info">
+                    <h3>New Arrival</h3>
+                    <p>Latest fashion collection</p>
+
+                    <a href="https://wa.me/9779824260099" class="btn gold-btn">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="product">
+                <div class="product-image">
+                    PRODUCT IMAGE
+                </div>
+
+                <div class="product-info">
+                    <h3>New Arrival</h3>
+                    <p>Trendy collection for everyone</p>
+
+                    <a href="https://wa.me/9779824260099" class="btn gold-btn">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="product">
+                <div class="product-image">
+                    PRODUCT IMAGE
+                </div>
+
+                <div class="product-info">
+                    <h3>New Arrival</h3>
+                    <p>Quality fashion at good price</p>
+
+                    <a href="https://wa.me/9779824260099" class="btn gold-btn">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <h2>Visit IFC Collection</h2>
+
+        <p>
+            📍 <strong>Location:</strong>
+            Pokharichowk, Parbatipur-21, Bharatpur
+        </p>
+
+        <p>
+            📞 <strong>Contact:</strong>
+            9824260099
+        </p>
+
+        <p>
+            🚚 Delivery All Over Nepal
+        </p>
+
+        <p>
+            💵 Cash on Delivery Available
+        </p>
+
+        <br>
+
+        <a href="https://wa.me/9779824260099" class="btn gold-btn">
+            Order on WhatsApp
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 <strong>IFC Collection</strong>.
+            All Rights Reserved.
+        </p>
+
+        <p>
+            Fashion for Everyone
+        </p>
+
+    </footer>
+
+</body>
+</html>
