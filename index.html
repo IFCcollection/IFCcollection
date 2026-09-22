@@ -1,560 +1,568 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>IFC Collection | Fashion for Everyone</title>
+<title>Imran Fashion Collection | IFC</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html{scroll-behavior:smooth;}
 
-        body {
-            background: #fffaf7;
-            color: #2b0a12;
-        }
+body{
+    background:#050505;
+    color:#fff;
+    overflow-x:hidden;
+}
 
-        /* HEADER */
-        header {
-            background: #5b1020;
-            color: white;
-            padding: 18px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
-        }
+/* HEADER */
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    padding:16px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #d4af37;
+}
 
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: #d4af37;
-            letter-spacing: 2px;
-        }
+.logo{
+    color:#d4af37;
+    font-size:21px;
+    font-weight:bold;
+    letter-spacing:1px;
+    text-shadow:0 0 10px rgba(212,175,55,.7);
+}
 
-        .logo span {
-            display: block;
-            color: white;
-            font-size: 11px;
-            letter-spacing: 3px;
-            margin-top: 3px;
-        }
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:20px;
+    transition:.3s;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 15px;
-        }
+nav a:hover{color:#d4af37;}
 
-        nav a:hover {
-            color: #d4af37;
-        }
+/* HERO */
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:60px 20px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 40%,#3b2b08 0%,#111 22%,#050505 65%);
+}
 
-        /* HERO */
-        .hero {
-            min-height: 520px;
-            background: linear-gradient(
-                rgba(91,16,32,0.92),
-                rgba(91,16,32,0.82)
-            );
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 50px 20px;
-        }
+.hero:before,
+.hero:after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:50%;
+    animation:rotate 15s linear infinite;
+}
 
-        .hero-content {
-            max-width: 750px;
-        }
+.hero:after{
+    width:450px;
+    height:450px;
+    animation-direction:reverse;
+}
 
-        .hero h1 {
-            color: #d4af37;
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
+.hero-content{
+    position:relative;
+    z-index:2;
+}
 
-        .hero h2 {
-            color: white;
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
+/* 3D BRAND */
+.hero h1{
+    font-size:clamp(38px,7vw,75px);
+    color:#d4af37;
+    letter-spacing:3px;
+    margin-bottom:20px;
+    text-transform:uppercase;
 
-        .hero p {
-            color: #f8e9c8;
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
+    text-shadow:
+        1px 1px 0 #8a6b19,
+        2px 2px 0 #705514,
+        3px 3px 0 #4d3a0e,
+        0 0 15px rgba(212,175,55,.8),
+        0 0 35px rgba(212,175,55,.35);
 
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            margin: 5px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    animation:float 3s ease-in-out infinite;
+}
 
-        .gold-btn {
-            background: #d4af37;
-            color: #3d0a16;
-        }
+.tagline{
+    font-size:20px;
+    color:#eee;
+    margin-bottom:10px;
+}
 
-        .gold-btn:hover {
-            transform: translateY(-3px);
-            background: #f0cc55;
-        }
+.sub{
+    color:#bbb;
+    margin-bottom:30px;
+}
 
-        .outline-btn {
-            border: 2px solid #d4af37;
-            color: #d4af37;
-        }
+/* BUTTON */
+.btn{
+    display:inline-block;
+    padding:14px 30px;
+    margin:6px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    color:#000;
+    background:linear-gradient(135deg,#fff0a6,#d4af37,#fff0a6);
+    background-size:200% 200%;
+    box-shadow:0 8px 20px rgba(212,175,55,.25);
+    transition:.3s;
+    animation:shine 3s infinite;
+}
 
-        .outline-btn:hover {
-            background: #d4af37;
-            color: #3d0a16;
-        }
+.btn:hover{
+    transform:translateY(-5px) scale(1.04);
+    box-shadow:0 15px 30px rgba(212,175,55,.45);
+}
 
-        /* FEATURES */
-        .features {
-            padding: 50px 7%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+.whatsapp{
+    display:inline-block;
+    background:#25D366;
+    color:#fff;
+    padding:11px 17px;
+    border-radius:7px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
 
-        .feature {
-            background: white;
-            padding: 30px 20px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(91,16,32,0.08);
-            border-top: 3px solid #d4af37;
-        }
+.whatsapp:hover{
+    transform:translateY(-3px) scale(1.04);
+    box-shadow:0 8px 20px rgba(37,211,102,.35);
+}
 
-        .feature .icon {
-            font-size: 35px;
-            margin-bottom: 12px;
-        }
+/* SECTION */
+section{
+    padding:70px 6%;
+}
 
-        .feature h3 {
-            color: #5b1020;
-            margin-bottom: 8px;
-        }
+.title{
+    text-align:center;
+    color:#d4af37;
+    font-size:32px;
+    margin-bottom:40px;
+    text-shadow:0 0 15px rgba(212,175,55,.35);
+}
 
-        .feature p {
-            color: #666;
-        }
+/* CATEGORIES */
+.categories{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
 
-        /* SECTION */
-        .section {
-            padding: 60px 7%;
-        }
+.category{
+    padding:35px 15px;
+    text-align:center;
+    border:1px solid #3d331a;
+    border-radius:15px;
+    background:linear-gradient(145deg,#181818,#090909);
+    box-shadow:8px 8px 20px #000,-5px -5px 15px #191919;
+    transition:.4s;
+    transform-style:preserve-3d;
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+.category:hover{
+    transform:perspective(600px) rotateX(8deg) rotateY(-8deg) translateY(-10px);
+    border-color:#d4af37;
+    box-shadow:0 15px 35px rgba(212,175,55,.18);
+}
 
-        .section-title h2 {
-            color: #5b1020;
-            font-size: 34px;
-        }
+.icon{
+    font-size:48px;
+    display:block;
+    margin-bottom:15px;
+    filter:drop-shadow(0 8px 5px #000);
+}
 
-        .section-title p {
-            color: #777;
-            margin-top: 8px;
-        }
+.category h3{
+    color:#d4af37;
+    margin-bottom:8px;
+}
 
-        /* CATEGORIES */
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
+/* PRODUCTS */
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+}
 
-        .category {
-            background: #5b1020;
-            color: white;
-            min-height: 160px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            border: 2px solid #d4af37;
-            transition: 0.3s;
-        }
+.product{
+    background:linear-gradient(145deg,#181818,#080808);
+    border:1px solid #333;
+    border-radius:15px;
+    overflow:hidden;
+    text-align:center;
+    transition:.4s;
+    transform-style:preserve-3d;
+}
 
-        .category:hover {
-            transform: translateY(-5px);
-            background: #75172c;
-        }
+.product:hover{
+    transform:perspective(700px) rotateY(-5deg) translateY(-10px);
+    border-color:#d4af37;
+    box-shadow:0 18px 35px rgba(212,175,55,.18);
+}
 
-        .category h3 {
-            color: #d4af37;
-            font-size: 22px;
-        }
+.product-img{
+    height:230px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(circle,#333,#111 65%);
+    color:#777;
+    font-size:15px;
+    position:relative;
+}
 
-        /* PRODUCTS */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+.product-img:before{
+    content:"NEW ARRIVAL";
+    position:absolute;
+    top:12px;
+    left:12px;
+    font-size:11px;
+    padding:5px 8px;
+    border-radius:5px;
+    color:#000;
+    background:#d4af37;
+    font-weight:bold;
+}
 
-        .product {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border: 1px solid #eee;
-        }
+.product-info{
+    padding:20px;
+}
 
-        .product-image {
-            height: 220px;
-            background: #eee2e4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #5b1020;
-            font-size: 18px;
-            font-weight: bold;
-        }
+.product h3{
+    margin-bottom:12px;
+}
 
-        .product-info {
-            padding: 20px;
-        }
+.price{
+    color:#d4af37;
+    font-size:21px;
+    font-weight:bold;
+    margin-bottom:16px;
+}
 
-        .product-info h3 {
-            color: #5b1020;
-            margin-bottom: 8px;
-        }
+/* INFO */
+.info{
+    text-align:center;
+    background:
+        radial-gradient(circle at center,#17120a,#080808 65%);
+    border-top:1px solid #222;
+}
 
-        .product-info p {
-            color: #777;
-            margin-bottom: 15px;
-        }
+.info p{
+    margin:12px 0;
+    color:#ddd;
+}
 
-        /* CONTACT */
-        .contact {
-            background: #5b1020;
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:28px;
+    background:#000;
+    border-top:1px solid #333;
+    color:#999;
+}
 
-        .contact h2 {
-            color: #d4af37;
-            font-size: 34px;
-            margin-bottom: 20px;
-        }
+/* FLOATING LIGHTS */
+.light{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:#d4af37;
+    border-radius:50%;
+    box-shadow:0 0 12px #d4af37;
+    animation:particle 6s linear infinite;
+}
 
-        .contact p {
-            margin: 10px 0;
-            font-size: 17px;
-        }
+.l1{left:15%;bottom:-10px;}
+.l2{left:35%;bottom:-20px;animation-delay:2s;}
+.l3{right:20%;bottom:-15px;animation-delay:1s;}
+.l4{right:40%;bottom:-20px;animation-delay:3s;}
 
-        .contact strong {
-            color: #d4af37;
-        }
+/* ANIMATIONS */
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
 
-        /* FOOTER */
-        footer {
-            background: #350914;
-            color: #ddd;
-            text-align: center;
-            padding: 25px 15px;
-        }
+@keyframes shine{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
 
-        footer strong {
-            color: #d4af37;
-        }
+@keyframes rotate{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
 
-        /* MOBILE */
-        @media (max-width: 768px) {
+@keyframes particle{
+    0%{transform:translateY(0);opacity:0;}
+    20%{opacity:1;}
+    100%{transform:translateY(-650px);opacity:0;}
+}
 
-            header {
-                padding: 15px 5%;
-            }
+/* MOBILE */
+@media(max-width:900px){
+    .categories,
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-            .logo {
-                font-size: 21px;
-            }
+    header{
+        flex-direction:column;
+        gap:12px;
+    }
 
-            nav {
-                display: none;
-            }
+    nav a{
+        margin:0 7px;
+    }
+}
 
-            .hero {
-                min-height: 470px;
-            }
+@media(max-width:550px){
+    .categories,
+    .products{
+        grid-template-columns:1fr;
+    }
 
-            .hero h1 {
-                font-size: 38px;
-            }
+    .hero{
+        min-height:580px;
+    }
 
-            .hero h2 {
-                font-size: 23px;
-            }
+    .hero h1{
+        font-size:39px;
+        letter-spacing:1px;
+    }
 
-            .hero p {
-                font-size: 16px;
-            }
+    .tagline{
+        font-size:17px;
+    }
 
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .categories {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 45px 5%;
-            }
-        }
-
-        @media (max-width: 450px) {
-            .categories {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .category {
-                min-height: 130px;
-            }
-        }
-    </style>
+    section{
+        padding:55px 5%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo">
-            IFC COLLECTION
-            <span>FASHION FOR EVERYONE</span>
+<header>
+    <div class="logo">IFC</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+
+    <span class="light l1"></span>
+    <span class="light l2"></span>
+    <span class="light l3"></span>
+    <span class="light l4"></span>
+
+    <div class="hero-content">
+
+        <h1>IMRAN FASHION<br>COLLECTION</h1>
+
+        <div class="tagline">
+            FASHION FOR EVERYONE
         </div>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#categories">Categories</a>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-
-        <div class="hero-content">
-
-            <h1>IFC COLLECTION</h1>
-
-            <h2>Fashion for Everyone</h2>
-
-            <p>
-                Quality Fashion at Reasonable Price
-                <br>
-                Men • Women • Kids • Shoes
-            </p>
-
-            <a href="#categories" class="btn gold-btn">
-                Shop Now
-            </a>
-
-            <a href="https://wa.me/9779824260099" class="btn outline-btn">
-                WhatsApp Order
-            </a>
-
+        <div class="sub">
+            Quality Fashion • Reasonable Price
         </div>
 
-    </section>
-
-
-    <!-- FEATURES -->
-    <section class="features">
-
-        <div class="feature">
-            <div class="icon">🚚</div>
-            <h3>All Nepal Delivery</h3>
-            <p>Delivery available all over Nepal.</p>
-        </div>
-
-        <div class="feature">
-            <div class="icon">💵</div>
-            <h3>Cash on Delivery</h3>
-            <p>COD available for your convenience.</p>
-        </div>
-
-        <div class="feature">
-            <div class="icon">✨</div>
-            <h3>Quality Fashion</h3>
-            <p>Trendy fashion at reasonable prices.</p>
-        </div>
-
-    </section>
-
-
-    <!-- CATEGORIES -->
-    <section class="section" id="categories">
-
-        <div class="section-title">
-            <h2>Shop By Category</h2>
-            <p>Find your favourite fashion collection</p>
-        </div>
-
-        <div class="categories">
-
-            <div class="category">
-                <h3>👔<br>Men</h3>
-            </div>
-
-            <div class="category">
-                <h3>👗<br>Women</h3>
-            </div>
-
-            <div class="category">
-                <h3>🧒<br>Kids</h3>
-            </div>
-
-            <div class="category">
-                <h3>👟<br>Shoes</h3>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PRODUCTS -->
-    <section class="section" id="products">
-
-        <div class="section-title">
-            <h2>New Arrivals</h2>
-            <p>Latest fashion available at IFC Collection</p>
-        </div>
-
-        <div class="products">
-
-            <div class="product">
-                <div class="product-image">
-                    PRODUCT IMAGE
-                </div>
-
-                <div class="product-info">
-                    <h3>New Arrival</h3>
-                    <p>Latest fashion collection</p>
-
-                    <a href="https://wa.me/9779824260099" class="btn gold-btn">
-                        Order Now
-                    </a>
-                </div>
-            </div>
-
-
-            <div class="product">
-                <div class="product-image">
-                    PRODUCT IMAGE
-                </div>
-
-                <div class="product-info">
-                    <h3>New Arrival</h3>
-                    <p>Trendy collection for everyone</p>
-
-                    <a href="https://wa.me/9779824260099" class="btn gold-btn">
-                        Order Now
-                    </a>
-                </div>
-            </div>
-
-
-            <div class="product">
-                <div class="product-image">
-                    PRODUCT IMAGE
-                </div>
-
-                <div class="product-info">
-                    <h3>New Arrival</h3>
-                    <p>Quality fashion at good price</p>
-
-                    <a href="https://wa.me/9779824260099" class="btn gold-btn">
-                        Order Now
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-
-        <h2>Visit IFC Collection</h2>
-
-        <p>
-            📍 <strong>Location:</strong>
-            Pokharichowk, Parbatipur-21, Bharatpur
+        <p class="sub">
+            Men • Women • Kids • Shoes
         </p>
 
-        <p>
-            📞 <strong>Contact:</strong>
-            9824260099
-        </p>
-
-        <p>
-            🚚 Delivery All Over Nepal
-        </p>
-
-        <p>
-            💵 Cash on Delivery Available
-        </p>
-
-        <br>
-
-        <a href="https://wa.me/9779824260099" class="btn gold-btn">
-            Order on WhatsApp
+        <a class="btn" href="#products">
+            🛍️ SHOP NOW
         </a>
 
-    </section>
+        <a class="whatsapp"
+           href="https://wa.me/9779824260099">
+            💬 WHATSAPP ORDER
+        </a>
 
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
+<section id="categories">
 
-        <p>
-            © 2026 <strong>IFC Collection</strong>.
-            All Rights Reserved.
-        </p>
+    <h2 class="title">SHOP BY CATEGORY</h2>
 
-        <p>
-            Fashion for Everyone
-        </p>
+    <div class="categories">
 
-    </footer>
+        <div class="category">
+            <span class="icon">👔</span>
+            <h3>MEN</h3>
+            <p>Trending Fashion</p>
+        </div>
+
+        <div class="category">
+            <span class="icon">👗</span>
+            <h3>WOMEN</h3>
+            <p>Latest Collection</p>
+        </div>
+
+        <div class="category">
+            <span class="icon">🧒</span>
+            <h3>KIDS</h3>
+            <p>Kids Fashion</p>
+        </div>
+
+        <div class="category">
+            <span class="icon">👟</span>
+            <h3>SHOES</h3>
+            <p>Fashion Footwear</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="products">
+
+    <h2 class="title">NEW ARRIVALS</h2>
+
+    <div class="products">
+
+        <div class="product">
+
+            <div class="product-img">
+                Product Image
+            </div>
+
+            <div class="product-info">
+                <h3>Dragon Print T-Shirt</h3>
+
+                <div class="price">Rs. 750</div>
+
+                <a class="whatsapp"
+                   href="https://wa.me/9779824260099">
+                   Order on WhatsApp
+                </a>
+            </div>
+
+        </div>
+
+        <div class="product">
+
+            <div class="product-img">
+                Product Image
+            </div>
+
+            <div class="product-info">
+                <h3>Polka Dot Joggers</h3>
+
+                <div class="price">Rs. 1000</div>
+
+                <a class="whatsapp"
+                   href="https://wa.me/9779824260099">
+                   Order on WhatsApp
+                </a>
+            </div>
+
+        </div>
+
+        <div class="product">
+
+            <div class="product-img">
+                Product Image
+            </div>
+
+            <div class="product-info">
+                <h3>Rajasthani Kurta</h3>
+
+                <div class="price">Rs. 1250</div>
+
+                <a class="whatsapp"
+                   href="https://wa.me/9779824260099">
+                   Order on WhatsApp
+                </a>
+            </div>
+
+        </div>
+
+        <div class="product">
+
+            <div class="product-img">
+                Product Image
+            </div>
+
+            <div class="product-info">
+                <h3>Gents Shoes</h3>
+
+                <div class="price">Rs. 1400</div>
+
+                <a class="whatsapp"
+                   href="https://wa.me/9779824260099">
+                   Order on WhatsApp
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="info" id="contact">
+
+    <h2 class="title">IMRAN FASHION COLLECTION</h2>
+
+    <p>📍 Pokharichowk, Parbatipur-21, Bharatpur</p>
+
+    <p>🚚 Delivery All Over Nepal</p>
+
+    <p>💵 Cash on Delivery Available</p>
+
+    <p>📞 9824260099 / 9761078220 / 9845155586</p>
+
+    <br>
+
+    <a class="btn"
+       href="https://wa.me/9779824260099">
+       💬 WHATSAPP US
+    </a>
+
+</section>
+
+<footer>
+    ©️ 2026 Imran Fashion Collection • IFC
+    <br><br>
+    Fashion for Everyone ✨
+</footer>
 
 </body>
 </html>
