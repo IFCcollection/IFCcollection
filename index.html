@@ -3,16 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Imran Fashion Collection | IFC</title>
 
 <style>
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
 }
 
 html{
@@ -22,1758 +19,1039 @@ html{
 body{
     background:#050505;
     color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
     overflow-x:hidden;
 }
 
-/* ================= HEADER ================= */
+:root{
+    --gold:#d4af37;
+    --lightgold:#ffe9a3;
+    --darkgold:#8c6b16;
+}
 
 header{
     position:sticky;
     top:0;
-    z-index:1000;
-    padding:15px 6%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(0,0,0,.94);
+    z-index:999;
+    background:rgba(0,0,0,.92);
     backdrop-filter:blur(12px);
-    border-bottom:1px solid #d4af37;
+    border-bottom:1px solid rgba(212,175,55,.35);
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
 .logo{
-    color:#d4af37;
+    color:var(--gold);
     font-size:22px;
-    font-weight:bold;
-    letter-spacing:2px;
-    text-shadow:0 0 12px rgba(212,175,55,.7);
+    font-weight:900;
+    cursor:pointer;
+    letter-spacing:1px;
 }
 
-nav a{
+.navlinks{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.navlinks button{
+    background:transparent;
+    border:1px solid rgba(212,175,55,.35);
     color:#fff;
-    text-decoration:none;
-    margin-left:20px;
+    padding:9px 13px;
+    border-radius:20px;
+    cursor:pointer;
     transition:.3s;
 }
 
-nav a:hover{
-    color:#d4af37;
+.navlinks button:hover,
+.navlinks button.active{
+    background:var(--gold);
+    color:#000;
+    transform:translateY(-2px);
 }
 
-/* ================= HERO ================= */
-
 .hero{
-    min-height:650px;
+    min-height:75vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:70px 20px;
+    background:
+    radial-gradient(circle at center,rgba(212,175,55,.14),transparent 45%),
+    #050505;
+}
+
+.small-brand{
+    color:var(--gold);
+    letter-spacing:5px;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.brand-title{
+    font-size:clamp(38px,8vw,92px);
+    font-weight:1000;
+    line-height:1;
+    color:#fff;
+    text-shadow:
+        0 0 8px rgba(212,175,55,.4),
+        0 0 35px rgba(212,175,55,.15);
+    cursor:pointer;
+}
+
+.brand-title.shake{
+    animation:shake .16s infinite;
+}
+
+.brand-title.break{
+    animation:breakTitle 2.2s forwards;
+}
+
+@keyframes shake{
+    0%{transform:translate(0,0) rotate(0)}
+    25%{transform:translate(-4px,2px) rotate(-1deg)}
+    50%{transform:translate(4px,-2px) rotate(1deg)}
+    75%{transform:translate(-3px,-1px) rotate(-1deg)}
+    100%{transform:translate(3px,1px) rotate(1deg)}
+}
+
+@keyframes breakTitle{
+    0%{
+        opacity:1;
+        transform:scale(1);
+        filter:none;
+    }
+    30%{
+        transform:scale(1.03);
+        filter:brightness(1.7);
+    }
+    60%{
+        transform:scale(.98) skewX(5deg);
+        letter-spacing:8px;
+        filter:contrast(2);
+    }
+    100%{
+        opacity:.12;
+        transform:scale(.7) skewX(-10deg);
+        letter-spacing:15px;
+        filter:blur(5px);
+    }
+}
+
+.tagline{
+    margin-top:25px;
+    color:#ccc;
+    font-size:18px;
+}
+
+.fixed-price{
+    opacity:0;
+    transform:scale(.2) rotate(-20deg);
+    margin-top:40px;
+}
+
+.fixed-price.show{
+    animation:priceReveal 1.7s cubic-bezier(.17,.89,.32,1.3) forwards;
+}
+
+@keyframes priceReveal{
+    0%{
+        opacity:0;
+        transform:scale(.2) rotate(-40deg);
+    }
+    45%{
+        opacity:1;
+        transform:scale(1.35) rotate(15deg);
+    }
+    70%{
+        transform:scale(.9) rotate(-5deg);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+}
+
+.price-main{
+    color:var(--gold);
+    font-size:clamp(26px,5vw,48px);
+    font-weight:1000;
+    text-shadow:0 0 20px rgba(212,175,55,.6);
+}
+
+.price-sub{
+    margin-top:8px;
+    font-size:clamp(15px,3vw,24px);
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.category-area{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 18px;
+}
+
+.category-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.category-title h2{
+    color:var(--gold);
+    font-size:32px;
+}
+
+.category-title p{
+    color:#aaa;
+    margin-top:8px;
+}
+
+.gallery{
+    position:relative;
+    min-height:480px;
     display:flex;
     align-items:center;
     justify-content:center;
-    text-align:center;
-    padding:60px 20px;
-    position:relative;
+    perspective:1200px;
     overflow:hidden;
-
-    background:
-    radial-gradient(
-        circle at 50% 35%,
-        #4a3608 0%,
-        #171205 20%,
-        #050505 65%
-    );
 }
 
-.hero:before,
-.hero:after{
-    content:"";
+.product-card{
     position:absolute;
-    border:1px solid rgba(212,175,55,.22);
-    border-radius:50%;
-    animation:rotate 16s linear infinite;
+    width:min(330px,75vw);
+    background:linear-gradient(145deg,#151515,#050505);
+    border:1px solid rgba(212,175,55,.5);
+    border-radius:25px;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.7);
+    transition:.65s cubic-bezier(.2,.8,.2,1);
 }
 
-.hero:before{
-    width:330px;
-    height:330px;
-}
-
-.hero:after{
-    width:500px;
-    height:500px;
-    animation-direction:reverse;
-    animation-duration:22s;
-}
-
-.hero-content{
-    position:relative;
+.product-card.center{
+    transform:translateX(0) scale(1) rotateY(0);
     z-index:5;
 }
 
-/* ================= BRAND TITLE ================= */
-
-.brand-title{
-    position:relative;
-    cursor:pointer;
-    user-select:none;
-
-    font-size:clamp(38px,7vw,76px);
-    line-height:1.05;
-    letter-spacing:3px;
-
-    color:#d4af37;
-    text-transform:uppercase;
-
-    text-shadow:
-        1px 1px 0 #8a6b19,
-        2px 2px 0 #705514,
-        3px 3px 0 #4d3a0e,
-        0 0 18px rgba(212,175,55,.9),
-        0 0 40px rgba(212,175,55,.35);
-
-    animation:titleFloat 3s ease-in-out infinite;
-}
-
-
-/* ================= SHAKE ================= */
-
-.brand-title.shake{
-
-    animation:
-        titleShake .10s infinite,
-        goldFlash .25s infinite alternate;
-}
-
-@keyframes titleShake{
-
-    0%{
-        transform:translate(0,0) rotate(0deg);
-    }
-
-    20%{
-        transform:translate(-7px,2px) rotate(-1deg);
-    }
-
-    40%{
-        transform:translate(7px,-2px) rotate(1deg);
-    }
-
-    60%{
-        transform:translate(-5px,-3px) rotate(-1deg);
-    }
-
-    80%{
-        transform:translate(5px,3px) rotate(1deg);
-    }
-
-    100%{
-        transform:translate(0,0) rotate(0deg);
-    }
-}
-
-
-/* ================= BLAST / BROCK + CONSTRUCT ================= */
-
-.brand-title.blast{
-
-    animation:
-        titleBlast 2s cubic-bezier(.16,1,.3,1) forwards;
-}
-
-@keyframes titleBlast{
-
-    /* NORMAL */
-
-    0%{
-        transform:scale(1);
-        opacity:1;
-        filter:blur(0);
-        letter-spacing:3px;
-    }
-
-    /* START BREAK */
-
-    15%{
-        transform:scale(1.08) rotate(-1deg);
-        opacity:1;
-        filter:brightness(1.5);
-        letter-spacing:7px;
-    }
-
-    /* EXPAND */
-
-    35%{
-        transform:scale(1.30) rotate(2deg);
-        opacity:.9;
-        filter:brightness(2) blur(1px);
-        letter-spacing:14px;
-    }
-
-    /* BREAK */
-
-    52%{
-        transform:scale(1.65) rotate(-3deg);
-        opacity:.35;
-        filter:blur(7px);
-        letter-spacing:27px;
-    }
-
-    /* BLAST */
-
-    65%{
-        transform:scale(1.9);
-        opacity:0;
-        filter:blur(12px);
-        letter-spacing:35px;
-    }
-
-    /* ================= CONSTRUCT ================= */
-
-    74%{
-        transform:scale(.65);
-        opacity:0;
-        filter:blur(10px);
-        letter-spacing:18px;
-    }
-
-    83%{
-        transform:scale(.82);
-        opacity:.25;
-        filter:blur(6px);
-        letter-spacing:12px;
-    }
-
-    91%{
-        transform:scale(1.04);
-        opacity:.75;
-        filter:blur(2px);
-        letter-spacing:5px;
-    }
-
-    /* BACK TO NORMAL */
-
-    100%{
-        transform:scale(1);
-        opacity:1;
-        filter:blur(0);
-        letter-spacing:3px;
-    }
-}
-
-
-@keyframes goldFlash{
-
-    from{
-        filter:brightness(1);
-    }
-
-    to{
-        filter:brightness(1.8);
-    }
-}
-
-
-@keyframes titleFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-}
-
-
-/* ================= FIXED PRICE ================= */
-
-.fixed-price{
-
-    margin-top:24px;
-    display:inline-block;
-    position:relative;
-
-    padding:11px 22px;
-
-    color:#fff0a6;
-
-    font-size:17px;
-    font-weight:bold;
-
-    letter-spacing:1.5px;
-
-    border:1px solid rgba(212,175,55,.7);
-    border-radius:30px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(212,175,55,.05),
-            rgba(212,175,55,.25),
-            rgba(212,175,55,.05)
-        );
-
-    box-shadow:
-        0 0 12px rgba(212,175,55,.25),
-        inset 0 0 15px rgba(212,175,55,.08);
-
-    overflow:hidden;
-
-    /* HIDDEN UNTIL TITLE CONSTRUCTS */
-
-    opacity:0;
-    visibility:hidden;
-    transform:scale(.5) translateY(20px);
-}
-
-
-/* FIXED PRICE CONSTRUCT */
-
-.fixed-price.show{
-
-    visibility:visible;
-
-    animation:
-        priceConstruct 1.2s cubic-bezier(.16,1,.3,1) forwards,
-        priceFloat 3s ease-in-out 1.2s infinite,
-        priceGlow 2s ease-in-out 1.2s infinite alternate;
-}
-
-
-.fixed-price span{
-
-    display:inline-block;
-
-    animation:kingMove 2.5s ease-in-out infinite;
-}
-
-
-.fixed-price:after{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-100%;
-
-    width:70%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.55),
-            transparent
-        );
-
-    transform:skewX(-20deg);
-
-    animation:priceShine 3s infinite;
-}
-
-
-/* PRICE CONSTRUCTION */
-
-@keyframes priceConstruct{
-
-    0%{
-        opacity:0;
-        transform:scale(.3) rotateX(80deg);
-        filter:blur(12px);
-    }
-
-    25%{
-        opacity:.25;
-        transform:scale(1.25) rotateX(-20deg);
-        filter:blur(6px);
-    }
-
-    50%{
-        opacity:.6;
-        transform:scale(.88) rotateX(12deg);
-        filter:blur(3px);
-    }
-
-    75%{
-        opacity:1;
-        transform:scale(1.08) rotateX(-4deg);
-        filter:blur(0);
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1) rotateX(0);
-        filter:blur(0);
-    }
-}
-
-
-@keyframes priceFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-4px);
-    }
-}
-
-
-@keyframes priceGlow{
-
-    from{
-        box-shadow:
-            0 0 8px rgba(212,175,55,.2);
-    }
-
-    to{
-        box-shadow:
-            0 0 25px rgba(212,175,55,.55);
-    }
-}
-
-
-@keyframes kingMove{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.05);
-    }
-}
-
-
-@keyframes priceShine{
-
-    0%{
-        left:-100%;
-    }
-
-    60%,100%{
-        left:130%;
-    }
-}
-
-
-/* ================= HERO TEXT ================= */
-
-.tagline{
-    margin-top:18px;
-    font-size:20px;
-    color:#eee;
-}
-
-.sub{
-    color:#bbb;
-    margin-top:10px;
-}
-
-
-/* ================= BUTTONS ================= */
-
-.btn{
-
-    display:inline-block;
-
-    padding:14px 28px;
-
-    margin:18px 5px 5px;
-
-    border-radius:8px;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    color:#000;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff0a6,
-            #d4af37,
-            #fff0a6
-        );
-
-    background-size:200% 200%;
-
-    box-shadow:
-        0 8px 20px rgba(212,175,55,.25);
-
-    transition:.3s;
-
-    animation:shine 3s infinite;
-}
-
-.btn:hover{
-
-    transform:
-        translateY(-5px)
-        scale(1.04);
-
-    box-shadow:
-        0 15px 30px rgba(212,175,55,.5);
-}
-
-
-.whatsapp{
-
-    display:inline-block;
-
-    padding:11px 17px;
-
-    margin:18px 5px 5px;
-
-    border-radius:7px;
-
-    background:#25D366;
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.whatsapp:hover{
-
-    transform:
-        translateY(-3px)
-        scale(1.04);
-
-    box-shadow:
-        0 8px 20px rgba(37,211,102,.4);
-}
-
-
-@keyframes shine{
-
-    0%{
-        background-position:0% 50%;
-    }
-
-    50%{
-        background-position:100% 50%;
-    }
-
-    100%{
-        background-position:0% 50%;
-    }
-}
-
-
-/* ================= SECTION ================= */
-
-section{
-    padding:70px 6%;
-}
-
-.title{
-
-    text-align:center;
-
-    color:#d4af37;
-
-    font-size:32px;
-
-    margin-bottom:40px;
-
-    text-shadow:
-        0 0 15px rgba(212,175,55,.35);
-}
-
-
-/* ================= CATEGORY ================= */
-
-.categories{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:22px;
-}
-
-
-.category{
-
-    padding:35px 15px;
-
-    text-align:center;
-
-    border:1px solid #3d331a;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #181818,
-            #090909
-        );
-
-    box-shadow:
-        8px 8px 20px #000,
-        -5px -5px 15px #191919;
-
-    transition:.4s;
-
-    transform-style:preserve-3d;
-}
-
-
-.category:hover{
-
-    transform:
-        perspective(600px)
-        rotateX(8deg)
-        rotateY(-8deg)
-        translateY(-10px);
-
-    border-color:#d4af37;
-
-    box-shadow:
-        0 15px 35px
-        rgba(212,175,55,.18);
-}
-
-
-.icon{
-
-    font-size:48px;
-
-    display:block;
-
-    margin-bottom:15px;
-
-    filter:
-        drop-shadow(0 8px 5px #000);
-}
-
-
-.category h3{
-
-    color:#d4af37;
-
-    margin-bottom:8px;
-}
-
-
-/* ================= PRODUCTS ================= */
-
-.products{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:24px;
-}
-
-
-.product{
-
-    background:
-        linear-gradient(
-            145deg,
-            #181818,
-            #080808
-        );
-
-    border:1px solid #333;
-
-    border-radius:15px;
-
-    overflow:hidden;
-
-    text-align:center;
-
-    transition:.4s;
-
-    transform-style:preserve-3d;
-}
-
-
-.product:hover{
-
-    transform:
-        perspective(700px)
-        rotateY(-5deg)
-        translateY(-10px);
-
-    border-color:#d4af37;
-
-    box-shadow:
-        0 18px 35px
-        rgba(212,175,55,.18);
-}
-
-
-/* PRODUCT VIDEO */
-
-.product-img{
-
-    height:230px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    position:relative;
-
-    background:
-        radial-gradient(
-            circle,
-            #333,
-            #111 65%
-        );
-
-    color:#777;
-
-    font-size:15px;
-
-    text-decoration:none;
-
-    cursor:pointer;
-}
-
-
-.product-img:before{
-
-    content:"NEW ARRIVAL";
-
-    position:absolute;
-
-    top:12px;
-    left:12px;
-
-    font-size:11px;
-
-    padding:5px 8px;
-
-    border-radius:5px;
-
-    color:#000;
-
-    background:#d4af37;
-
-    font-weight:bold;
-
+.product-card.left{
+    transform:translateX(-300px) scale(.72) rotateY(35deg);
+    opacity:.55;
     z-index:2;
 }
 
-
-.watch{
-
-    padding:12px 18px;
-
-    border-radius:25px;
-
-    background:rgba(0,0,0,.75);
-
-    color:#fff;
-
-    border:1px solid #d4af37;
-
-    font-weight:bold;
-
-    box-shadow:
-        0 0 15px rgba(212,175,55,.25);
-
-    transition:.3s;
+.product-card.right{
+    transform:translateX(300px) scale(.72) rotateY(-35deg);
+    opacity:.55;
+    z-index:2;
 }
 
-
-.product-img:hover .watch{
-
-    transform:scale(1.08);
-
-    background:#d4af37;
-
-    color:#000;
+.product-card.hidden-card{
+    opacity:0;
+    transform:scale(.5);
+    z-index:1;
 }
 
-
-/* ================= PRODUCT INFO ================= */
-
-.product-info{
-    padding:20px;
+.product-image{
+    height:260px;
+    border-radius:18px;
+    background:
+    radial-gradient(circle,rgba(212,175,55,.18),transparent 55%),
+    linear-gradient(145deg,#222,#080808);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#777;
+    font-size:18px;
+    overflow:hidden;
+    margin-bottom:15px;
 }
 
-.product h3{
-    margin-bottom:12px;
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.product-name{
+    font-size:21px;
+    font-weight:900;
 }
 
 .price{
-
-    color:#d4af37;
-
-    font-size:21px;
-
-    font-weight:bold;
-
-    margin-bottom:13px;
+    color:var(--gold);
+    font-size:22px;
+    font-weight:900;
+    margin:8px 0;
 }
 
-
-/* ================= STOCK ================= */
-
-.stock-box{
-    margin:12px 0 17px;
+.stock{
+    font-size:13px;
+    color:#bbb;
+    margin:8px 0;
 }
-
-.stock-text{
-
-    font-size:14px;
-
-    color:#aaa;
-
-    margin-bottom:8px;
-}
-
-.stock-number{
-
-    color:#fff;
-
-    font-weight:bold;
-}
-
 
 .stock-bar{
-
-    width:100%;
-
-    height:7px;
-
-    background:#292929;
-
+    height:5px;
+    background:#252525;
     border-radius:10px;
-
     overflow:hidden;
+    margin-bottom:15px;
 }
-
 
 .stock-fill{
-
     height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #8a6b19,
-            #d4af37,
-            #fff0a6
-        );
-
-    border-radius:10px;
-
-    transition:.5s;
+    background:linear-gradient(90deg,var(--darkgold),var(--gold),var(--lightgold));
 }
 
-
-/* ================= OUT OF STOCK ================= */
-
-.out-stock{
-
-    color:#ff4b4b;
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    margin:15px 0;
-
-    text-shadow:
-        0 0 10px rgba(255,0,0,.35);
+.actions{
+    display:flex;
+    gap:8px;
 }
 
-
-.disabled-order{
-
-    display:inline-block;
-
-    padding:10px 15px;
-
-    border-radius:7px;
-
-    background:#333;
-
-    color:#777;
-
-    cursor:not-allowed;
+.actions a,
+.actions button{
+    flex:1;
+    padding:11px 8px;
+    border-radius:12px;
+    border:1px solid var(--gold);
+    text-decoration:none;
+    cursor:pointer;
+    font-weight:700;
 }
 
+.order{
+    background:var(--gold);
+    color:#000;
+}
 
-/* ================= CONTACT ================= */
+.video{
+    background:#111;
+    color:#fff;
+}
 
-.info{
+.gallery-controls{
+    position:absolute;
+    bottom:5px;
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    z-index:10;
+}
 
+.gallery-controls button{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    background:#111;
+    color:var(--gold);
+    font-size:20px;
+    cursor:pointer;
+}
+
+.category-section{
+    display:none;
+}
+
+.category-section.active{
+    display:block;
+    animation:sectionIn .7s ease;
+}
+
+@keyframes sectionIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.welcome{
+    max-width:900px;
+    margin:60px auto;
+    padding:30px 20px;
     text-align:center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #17120a,
-            #080808 65%
-        );
-
-    border-top:1px solid #222;
+    border-top:1px solid rgba(212,175,55,.2);
+    border-bottom:1px solid rgba(212,175,55,.2);
 }
 
-
-.info p{
-
-    margin:12px 0;
-
-    color:#ddd;
+.welcome h2{
+    color:var(--gold);
+    margin-bottom:12px;
 }
 
+.welcome p{
+    color:#bbb;
+    line-height:1.7;
+}
 
-/* ================= FOOTER ================= */
+.contact{
+    padding:60px 20px;
+    text-align:center;
+    background:#080808;
+    border-top:1px solid rgba(212,175,55,.2);
+}
+
+.contact h2{
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+.contact p{
+    margin:7px;
+    color:#ccc;
+}
+
+.whatsapp-main{
+    display:inline-block;
+    margin-top:20px;
+    padding:14px 25px;
+    border-radius:30px;
+    background:var(--gold);
+    color:#000;
+    text-decoration:none;
+    font-weight:900;
+}
 
 footer{
-
     text-align:center;
-
-    padding:28px;
-
-    background:#000;
-
-    border-top:1px solid #333;
-
-    color:#999;
+    padding:25px;
+    color:#777;
+    font-size:13px;
 }
 
+@media(max-width:700px){
 
-/* ================= FLOATING LIGHTS ================= */
-
-.light{
-
-    position:absolute;
-
-    width:5px;
-    height:5px;
-
-    background:#d4af37;
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 12px #d4af37;
-
-    animation:
-        particle 6s linear infinite;
-}
-
-
-.l1{
-    left:15%;
-    bottom:-10px;
-}
-
-.l2{
-    left:35%;
-    bottom:-20px;
-    animation-delay:2s;
-}
-
-.l3{
-    right:20%;
-    bottom:-15px;
-    animation-delay:1s;
-}
-
-.l4{
-    right:40%;
-    bottom:-20px;
-    animation-delay:3s;
-}
-
-
-@keyframes particle{
-
-    0%{
-        transform:translateY(0);
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(-650px);
-        opacity:0;
-    }
-}
-
-
-@keyframes rotate{
-
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
-
-    .categories,
-    .products{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    header{
-
+    .nav{
         flex-direction:column;
-
-        gap:12px;
     }
 
-    nav a{
-        margin:0 7px;
-    }
-}
-
-
-@media(max-width:550px){
-
-    .categories,
-    .products{
-        grid-template-columns:1fr;
+    .navlinks{
+        width:100%;
     }
 
-    .hero{
-        min-height:620px;
+    .navlinks button{
+        padding:8px 10px;
+        font-size:12px;
     }
 
-    .brand-title{
-
-        font-size:39px;
-
-        letter-spacing:1px;
+    .gallery{
+        min-height:450px;
     }
 
-    .fixed-price{
-
-        font-size:14px;
-
-        padding:10px 15px;
+    .product-card.left{
+        transform:translateX(-190px) scale(.62) rotateY(35deg);
     }
 
-    .tagline{
-        font-size:17px;
+    .product-card.right{
+        transform:translateX(190px) scale(.62) rotateY(-35deg);
     }
 
-    section{
-        padding:55px 5%;
+    .product-image{
+        height:230px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ================= HEADER ================= -->
-
 <header>
+<div class="nav">
 
-    <div class="logo">
-        IFC
-    </div>
+<div class="logo" onclick="welcomeVoice()">
+IFC
+</div>
 
-    <nav>
+<div class="navlinks">
+<button onclick="openCategory('MEN')">MEN'S</button>
+<button onclick="openCategory('WOMEN')">WOMEN'S</button>
+<button onclick="openCategory('KIDS')">KIDS</button>
+<button onclick="openCategory('SHOES')">SHOES</button>
+<button onclick="openCategory('SALE')">🔥 SALE</button>
+</div>
 
-        <a href="#home">
-            Home
-        </a>
-
-        <a href="#categories">
-            Categories
-        </a>
-
-        <a href="#products">
-            Products
-        </a>
-
-        <a href="#contact">
-            Contact
-        </a>
-
-    </nav>
-
+</div>
 </header>
 
 
-<!-- ================= HERO ================= -->
+<section class="hero">
 
-<section
-    class="hero"
-    id="home">
+<div class="small-brand">WELCOME TO</div>
 
+<h1 id="brandTitle"
+    class="brand-title"
+    onclick="startIntro()">
+IMRAN FASHION COLLECTION
+</h1>
 
-    <span class="light l1"></span>
-    <span class="light l2"></span>
-    <span class="light l3"></span>
-    <span class="light l4"></span>
+<div class="tagline">
+Fashion for Everyone
+</div>
 
+<div id="fixedPrice" class="fixed-price">
+<div class="price-main">
+👑 FIXED PRICE 👑
+</div>
 
-    <div class="hero-content">
-
-
-        <h1
-            class="brand-title"
-            id="brandTitle"
-            data-text="IMRAN FASHION COLLECTION"
-            onclick="crackTitle()">
-
-            IMRAN FASHION<br>
-            COLLECTION
-
-        </h1>
-
-
-        <!-- FIXED PRICE -->
-
-        <div
-            class="fixed-price"
-            id="fixedPrice">
-
-            <span>
-                👑 FIXED PRICE 👑
-                <br>
-                KING &amp; QUEEN NEVER BARGAIN
-            </span>
-
-        </div>
-
-
-        <div class="tagline">
-            FASHION FOR EVERYONE
-        </div>
-
-
-        <div class="sub">
-            Quality Fashion • Reasonable Price
-        </div>
-
-
-        <div class="sub">
-            Men • Women • Kids • Shoes
-        </div>
-
-
-        <a
-            class="btn"
-            href="#products">
-
-            🛍️ SHOP NOW
-
-        </a>
-
-
-        <a
-            class="whatsapp"
-            href="https://wa.me/9779824260099">
-
-            💬 WHATSAPP ORDER
-
-        </a>
-
-
-    </div>
+<div class="price-sub">
+KING & QUEEN NEVER BARGAIN
+</div>
+</div>
 
 </section>
 
 
-<!-- ================= CATEGORIES ================= -->
+<div class="welcome">
 
-<section
-    id="categories">
+<h2>Welcome to the Imran Fashion Collection</h2>
 
+<p>
+Premium fashion for Men, Women & Kids.
+Quality products at reasonable fixed prices.
+Delivery available all over Nepal with COD.
+</p>
 
-    <h2 class="title">
-        SHOP BY CATEGORY
-    </h2>
-
-
-    <div class="categories">
-
-
-        <!-- MEN -->
-
-        <div class="category">
-
-            <span class="icon">
-                👔
-            </span>
-
-            <h3>
-                MEN
-            </h3>
-
-            <p>
-                Trending Fashion
-            </p>
-
-        </div>
+</div>
 
 
-        <!-- WOMEN -->
+<main class="category-area">
 
-        <div class="category">
+<!-- MEN -->
 
-            <span class="icon">
-                👗
-            </span>
+<section id="MEN" class="category-section active">
 
-            <h3>
-                WOMEN
-            </h3>
+<div class="category-title">
+<h2>👔 MEN'S COLLECTION</h2>
+<p>Trending fashion for modern men</p>
+</div>
 
-            <p>
-                Latest Collection
-            </p>
-
-        </div>
-
-
-        <!-- KIDS -->
-
-        <div class="category">
-
-            <span class="icon">
-                🧒
-            </span>
-
-            <h3>
-                KIDS
-            </h3>
-
-            <p>
-                Kids Fashion
-            </p>
-
-        </div>
-
-
-        <!-- SHOES -->
-
-        <div class="category">
-
-            <span class="icon">
-                👟
-            </span>
-
-            <h3>
-                SHOES
-            </h3>
-
-            <p>
-                Fashion Footwear
-            </p>
-
-        </div>
-
-
-    </div>
+<div class="gallery" id="gallery-MEN"></div>
 
 </section>
 
 
-<!-- ================= PRODUCTS ================= -->
+<!-- WOMEN -->
 
-<section
-    id="products">
+<section id="WOMEN" class="category-section">
 
+<div class="category-title">
+<h2>👗 WOMEN'S COLLECTION</h2>
+<p>Elegant & trendy fashion for women</p>
+</div>
 
-    <h2 class="title">
-        NEW ARRIVALS
-    </h2>
-
-
-    <div class="products">
-
-
-        <!-- DRAGON T-SHIRT -->
-
-        <div class="product">
-
-
-            <a
-                class="product-img"
-                href="https://vt.tiktok.com/ZSqo6fSUx/"
-                target="_blank">
-
-                <span class="watch">
-                    ▶ WATCH TIKTOK
-                </span>
-
-            </a>
-
-
-            <div class="product-info">
-
-
-                <h3>
-                    Dragon Print T-Shirt
-                </h3>
-
-
-                <div class="price">
-                    Rs. 750
-                </div>
-
-
-                <div class="stock-box">
-
-
-                    <div class="stock-text">
-
-                        Available:
-
-                        <span class="stock-number">
-                            12 pcs
-                        </span>
-
-                    </div>
-
-
-                    <div class="stock-bar">
-
-                        <div
-                            class="stock-fill"
-                            style="width:60%;">
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/9779824260099">
-
-                    💬 ORDER
-
-                </a>
-
-
-            </div>
-
-        </div>
-
-
-        <!-- POLKA DOT JOGGERS -->
-
-        <div class="product">
-
-
-            <a
-                class="product-img"
-                href="https://vt.tiktok.com/ZSqo65cYC/"
-                target="_blank">
-
-                <span class="watch">
-                    ▶ WATCH TIKTOK
-                </span>
-
-            </a>
-
-
-            <div class="product-info">
-
-
-                <h3>
-                    Polka Dot Joggers
-                </h3>
-
-
-                <div class="price">
-                    Rs. 1000
-                </div>
-
-
-                <div class="stock-box">
-
-
-                    <div class="stock-text">
-
-                        Available:
-
-                        <span class="stock-number">
-                            8 pcs
-                        </span>
-
-                    </div>
-
-
-                    <div class="stock-bar">
-
-                        <div
-                            class="stock-fill"
-                            style="width:40%;">
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/9779824260099">
-
-                    💬 ORDER
-
-                </a>
-
-
-            </div>
-
-        </div>
-
-
-        <!-- RAJASTHANI KURTA -->
-
-        <div class="product">
-
-
-            <a
-                class="product-img"
-                href="https://vt.tiktok.com/ZSqo6ugVK/"
-                target="_blank">
-
-                <span class="watch">
-                    ▶ WATCH TIKTOK
-                </span>
-
-            </a>
-
-
-            <div class="product-info">
-
-
-                <h3>
-                    Rajasthani Kurta
-                </h3>
-
-
-                <div class="price">
-                    Rs. 1250
-                </div>
-
-
-                <div class="stock-box">
-
-
-                    <div class="stock-text">
-
-                        Available:
-
-                        <span class="stock-number">
-                            5 pcs
-                        </span>
-
-                    </div>
-
-
-                    <div class="stock-bar">
-
-                        <div
-                            class="stock-fill"
-                            style="width:25%;">
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/9779824260099">
-
-                    💬 ORDER
-
-                </a>
-
-
-            </div>
-
-        </div>
-
-
-        <!-- SHOES -->
-
-        <div class="product">
-
-
-            <div class="product-img">
-
-                <span class="watch">
-                    👟 VIDEO COMING SOON
-                </span>
-
-            </div>
-
-
-            <div class="product-info">
-
-
-                <h3>
-                    Gents Shoes
-                </h3>
-
-
-                <div class="price">
-                    Rs. 1400
-                </div>
-
-
-                <div class="stock-box">
-
-
-                    <div class="stock-text">
-
-                        Available:
-
-                        <span class="stock-number">
-                            10 pcs
-                        </span>
-
-                    </div>
-
-
-                    <div class="stock-bar">
-
-                        <div
-                            class="stock-fill"
-                            style="width:50%;">
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/9779824260099">
-
-                    💬 ORDER
-
-                </a>
-
-
-            </div>
-
-        </div>
-
-
-    </div>
+<div class="gallery" id="gallery-WOMEN"></div>
 
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- KIDS -->
 
-<section
-    class="info"
-    id="contact">
+<section id="KIDS" class="category-section">
 
+<div class="category-title">
+<h2>🧒 KIDS COLLECTION</h2>
+<p>Cool fashion for little stars</p>
+</div>
 
-    <h2 class="title">
-        IMRAN FASHION COLLECTION
-    </h2>
-
-
-    <p>
-        📍 Pokharichowk, Parbatipur-21, Bharatpur
-    </p>
-
-
-    <p>
-        🚚 Delivery All Over Nepal
-    </p>
-
-
-    <p>
-        💵 Cash on Delivery Available
-    </p>
-
-
-    <p>
-        📞 9824260099 / 9761078220 / 9845155586
-    </p>
-
-
-    <br>
-
-
-    <a
-        class="btn"
-        href="https://wa.me/9779824260099">
-
-        💬 WHATSAPP US
-
-    </a>
-
+<div class="gallery" id="gallery-KIDS"></div>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- SHOES -->
+
+<section id="SHOES" class="category-section">
+
+<div class="category-title">
+<h2>👟 SHOES COLLECTION</h2>
+<p>Step into your style</p>
+</div>
+
+<div class="gallery" id="gallery-SHOES"></div>
+
+</section>
+
+
+<!-- SALE -->
+
+<section id="SALE" class="category-section">
+
+<div class="category-title">
+<h2>🔥 SALE COLLECTION</h2>
+<p>Limited offers • Fixed price</p>
+</div>
+
+<div class="gallery" id="gallery-SALE"></div>
+
+</section>
+
+</main>
+
+
+<section class="contact">
+
+<h2>IMRAN FASHION COLLECTION</h2>
+
+<p>📍 Pokharichowk, Parbatipur-21, Bharatpur</p>
+
+<p>📦 Delivery All Over Nepal</p>
+
+<p>💵 Cash On Delivery Available</p>
+
+<p>📞 9824260099 / 9761078220 / 9845155586</p>
+
+<a class="whatsapp-main"
+href="https://wa.me/9779824260099"
+target="_blank">
+💬 ORDER ON WHATSAPP
+</a>
+
+</section>
+
 
 <footer>
-
-    ©️ 2026 Imran Fashion Collection • IFC
-
-    <br><br>
-
-    Fashion for Everyone ✨
-
+© 2026 Imran Fashion Collection — IFC Collection
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
+/* =========================
+   PRODUCT DATABASE
+========================= */
 
-let titleAnimating = false;
+const products = {
+
+MEN:[
+{
+name:"Dragon Print T-Shirt",
+price:"Rs. 750",
+stock:12,
+image:"",
+video:"https://vt.tiktok.com/ZSqo6fSUx/"
+},
+{
+name:"Men's Fashion Shirt",
+price:"Rs. 800",
+stock:10,
+image:"",
+video:""
+},
+{
+name:"Trending Men's T-Shirt",
+price:"Rs. 500",
+stock:15,
+image:"",
+video:""
+}
+],
+
+WOMEN:[
+{
+name:"Rajasthani Kurta",
+price:"Rs. 1,250",
+stock:5,
+image:"",
+video:"https://vt.tiktok.com/ZSqo6ugVK/"
+},
+{
+name:"Ladies Fashion Wear",
+price:"Rs. 1,000",
+stock:8,
+image:"",
+video:""
+},
+{
+name:"Women's Trendy Dress",
+price:"Rs. 1,250",
+stock:6,
+image:"",
+video:""
+}
+],
+
+KIDS:[
+{
+name:"Kids Fashion Set",
+price:"Rs. 700",
+stock:10,
+image:"",
+video:""
+},
+{
+name:"Kids Trendy Wear",
+price:"Rs. 500",
+stock:12,
+image:"",
+video:""
+},
+{
+name:"Kids Shoes",
+price:"Rs. 1,000",
+stock:8,
+image:"",
+video:""
+}
+],
+
+SHOES:[
+{
+name:"Gents Shoes",
+price:"Rs. 1,400",
+stock:10,
+image:"",
+video:""
+},
+{
+name:"Ladies Shoes",
+price:"Rs. 1,200",
+stock:8,
+image:"",
+video:""
+},
+{
+name:"Kids Shoes",
+price:"Rs. 1,000",
+stock:8,
+image:"",
+video:""
+}
+],
+
+SALE:[
+{
+name:"Polka Dot Joggers",
+price:"Rs. 1,000",
+stock:8,
+image:"",
+video:"https://vt.tiktok.com/ZSqo65cYCx/"
+},
+{
+name:"Special Sale Item",
+price:"Rs. 500",
+stock:10,
+image:"",
+video:""
+},
+{
+name:"Limited Fashion Deal",
+price:"Rs. 750",
+stock:5,
+image:"",
+video:""
+}
+]
+
+};
 
 
-function crackTitle(){
+/* =========================
+   GALLERY SYSTEM
+========================= */
+
+const galleryState = {
+    MEN:0,
+    WOMEN:0,
+    KIDS:0,
+    SHOES:0,
+    SALE:0
+};
 
 
-    /* Prevent double click during animation */
+function renderGallery(category){
 
-    if(titleAnimating){
+    const gallery =
+        document.getElementById("gallery-"+category);
+
+    const items = products[category];
+
+    if(!items || items.length===0){
+        gallery.innerHTML =
+        "<p style='color:#aaa'>Coming Soon...</p>";
         return;
     }
 
+    const current = galleryState[category];
 
-    titleAnimating = true;
+    gallery.innerHTML = "";
+
+    items.forEach((product,index)=>{
+
+        let position = index-current;
+
+        if(position < 0)
+            position += items.length;
+
+        let className="hidden-card";
+
+        if(position===0)
+            className="center";
+
+        if(position===1)
+            className="right";
+
+        if(position===items.length-1)
+            className="left";
+
+        const card=document.createElement("div");
+
+        card.className="product-card "+className;
+
+        const stockPercent =
+            Math.min(product.stock*5,100);
+
+        let imageHTML =
+        product.image
+        ?
+        `<img src="${product.image}" alt="${product.name}">`
+        :
+        `<div>
+            <div style="font-size:42px">IFC</div>
+            <small>PRODUCT PHOTO</small>
+         </div>`;
+
+        let videoButton =
+        product.video
+        ?
+        `<a class="video"
+            href="${product.video}"
+            target="_blank">
+            ▶ VIDEO
+         </a>`
+        :
+        `<button class="video" disabled>
+            VIDEO SOON
+         </button>`;
+
+        card.innerHTML=`
+
+            <div class="product-image">
+                ${imageHTML}
+            </div>
+
+            <div class="product-name">
+                ${product.name}
+            </div>
+
+            <div class="price">
+                ${product.price}
+            </div>
+
+            <div class="stock">
+                Available: ${product.stock} pcs
+            </div>
+
+            <div class="stock-bar">
+                <div
+                class="stock-fill"
+                style="width:${stockPercent}%">
+                </div>
+            </div>
+
+            <div class="actions">
+
+                <a
+                class="order"
+                href="https://wa.me/9779824260099?text=${encodeURIComponent(
+                "Hello IFC Collection, I want to order "+product.name
+                )}"
+                target="_blank">
+                ORDER
+                </a>
+
+                ${videoButton}
+
+            </div>
+        `;
+
+        gallery.appendChild(card);
+
+    });
 
 
-    const title =
-        document.getElementById("brandTitle");
+    const controls=document.createElement("div");
 
+    controls.className="gallery-controls";
 
-    const fixedPrice =
-        document.getElementById("fixedPrice");
+    controls.innerHTML=`
 
+        <button onclick="previousProduct('${category}')">
+            ❮
+        </button>
 
-    /* ================= RESET ================= */
+        <button onclick="nextProduct('${category}')">
+            ❯
+        </button>
 
-    title.classList.remove("shake");
-    title.classList.remove("blast");
+    `;
 
-    fixedPrice.classList.remove("show");
-
-
-    /*
-       Force browser to restart animation
-    */
-
-    void title.offsetWidth;
-
-
-    /* ================= SHAKE ================= */
-
-    title.classList.add("shake");
-
-
-    /*
-       SHAKE = 2 SECONDS
-    */
-
-    setTimeout(function(){
-
-
-        title.classList.remove("shake");
-
-
-        void title.offsetWidth;
-
-
-        /* ================= BLAST ================= */
-
-        title.classList.add("blast");
-
-
-    },2000);
-
-
-    /*
-       SHAKE 2 sec
-       +
-       BLAST + CONSTRUCT 2 sec
-       =
-       4 sec
-    */
-
-    setTimeout(function(){
-
-
-        title.classList.remove("blast");
-
-
-        void title.offsetWidth;
-
-
-        /* ================= FIXED PRICE ================= */
-
-        fixedPrice.classList.add("show");
-
-
-    },4000);
-
-
-    /*
-       Animation completely finished
-    */
-
-    setTimeout(function(){
-
-
-        titleAnimating = false;
-
-
-    },5500);
-
+    gallery.appendChild(controls);
 }
 
 
-</script>
+function nextProduct(category){
 
+    galleryState[category]++;
+
+    if(
+        galleryState[category]
+        >= products[category].length
+    ){
+        galleryState[category]=0;
+    }
+
+    renderGallery(category);
+}
+
+
+function previousProduct(category){
+
+    galleryState[category]--;
+
+    if(galleryState[category]<0){
+        galleryState[category]=
+        products[category].length-1;
+    }
+
+    renderGallery(category);
+}
+
+
+/* =========================
+   CATEGORY NAVIGATION
+========================= */
+
+function openCategory(category){
+
+    document
+    .querySelectorAll(".category-section")
+    .forEach(section=>{
+        section.classList.remove("active");
+    });
+
+    document
+    .getElementById(category)
+    .classList.add("active");
+
+    document
+    .querySelectorAll(".navlinks button")
+    .forEach(button=>{
+        button.classList.remove("active");
+    });
+
+    window.scrollTo({
+        top:
+        document
+        .getElementById(category)
+        .offsetTop-80,
+        behavior:"smooth"
+    });
+
+    renderGallery(category);
+}
+
+
+/* =========================
+   INTRO ANIMATION
+========================= */
+
+let introPlayed=false;
+
+function startIntro(){
+
+    if(introPlayed)
+        return;
+
+    introPlayed=true;
+
+    const title=
+        document.getElementById("brandTitle");
+
+    const fixed=
+        document.getElementById("fixedPrice");
+
+    title.classList.add("shake");
+
+    setTimeout(()=>{
+
+        title.classList.remove("shake");
+        title.classList.add("break");
+
+    },2300);
+
+
+    setTimeout(()=>{
+
+        fixed.classList.add("show");
+
+    },4500);
+
+    welcomeVoice();
+}
+
+
+/* =========================
+   FUTURISTIC VOICE
+========================= */
+
+function welcomeVoice(){
+
+    if(!("speechSynthesis" in window))
+        return;
+
+    window.speechSynthesis.cancel();
+
+    const message =
+        "Welcome to the Imran Fashion Collection";
+
+    const voice =
+        new SpeechSynthesisUtterance(message);
+
+    voice.lang="en-US";
+    voice.rate=.82;
+    voice.pitch=.72;
+    voice.volume=1;
+
+    window.speechSynthesis.speak(voice);
+}
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
+renderGallery("MEN");
+
+
+/* Automatically start intro after page loads */
+
+setTimeout(()=>{
+
+    if(!introPlayed)
+        startIntro();
+
+},1000);
+
+</script>
 
 </body>
 </html>
