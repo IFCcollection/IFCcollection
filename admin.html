@@ -1,1 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>IFC Admin Panel</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    padding:20px;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+}
+
+h1{
+    color:#d4af37;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#aaa;
+    margin-bottom:25px;
+}
+
+.card{
+    background:#111;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin:15px 0 7px;
+    color:#d4af37;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:13px;
+    border-radius:8px;
+    border:1px solid #444;
+    background:#050505;
+    color:#fff;
+    font-size:15px;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:none;
+    border-radius:8px;
+    background:#d4af37;
+    color:#000;
+    font-weight:bold;
+    font-size:16px;
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+.photo-box{
+    border:2px dashed #555;
+    border-radius:10px;
+    padding:25px;
+    text-align:center;
+    color:#aaa;
+}
+
+.preview{
+    width:100%;
+    max-height:250px;
+    object-fit:contain;
+    margin-top:15px;
+    border-radius:10px;
+    display:none;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    color:#d4af37;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>👑 IFC ADMIN</h1>
+<p class="subtitle">Imran Fashion Collection</p>
+
+<div class="card">
+
+<label>Product Photo</label>
+
+<div class="photo-box">
+    📸 Select Product Photo
+    <input type="file" id="photo" accept="image/*">
+    <img id="preview" class="preview">
+</div>
+
+<label>Product Name</label>
+<input type="text" id="name" placeholder="Example: Dragon Print T-Shirt">
+
+<label>Price (Rs.)</label>
+<input type="number" id="price" placeholder="750">
+
+<label>Stock</label>
+<input type="number" id="stock" placeholder="12">
+
+<label>Category</label>
+<select id="category">
+    <option>T-Shirt</option>
+    <option>Shirt</option>
+    <option>Pants</option>
+    <option>Shoes</option>
+    <option>Kids</option>
+    <option>Ladies</option>
+    <option>Other</option>
+</select>
+
+<label>Description</label>
+<textarea id="description"
+placeholder="Product details..."></textarea>
+
+<label>TikTok / Video Link</label>
+<input type="url" id="video"
+placeholder="https://vt.tiktok.com/...">
+
+<button onclick="addProduct()">
+    ➕ ADD PRODUCT
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>📦 Product Management</h2>
+
+<p style="color:#aaa;margin-top:10px;">
+Add, edit, delete and update stock from your mobile.
+</p>
+
+</div>
+
+<a href="index.html" class="back">
+    ← Back to Website
+</a>
+
+</div>
+
+<script>
+
+const photo = document.getElementById("photo");
+const preview = document.getElementById("preview");
+
+photo.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(file){
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+    }
+
+});
+
+function addProduct(){
+
+    const name = document.getElementById("name").value;
+    const price = document.getElementById("price").value;
+    const stock = document.getElementById("stock").value;
+
+    if(!name || !price || !stock){
+
+        alert("Please fill Product Name, Price and Stock.");
+
+        return;
+    }
+
+    alert(
+        "Product information ready!\\n\\n" +
+        "Name: " + name +
+        "\\nPrice: Rs. " + price +
+        "\\nStock: " + stock
+    );
+
+}
+
+</script>
+
+</body>
+</html>
