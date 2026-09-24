@@ -7,7 +7,6 @@
 <title>IFC Collection | Imran Fashion Collection</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -15,17 +14,13 @@
     font-family:Arial,sans-serif;
 }
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
     background:#050505;
     color:#fff;
     overflow-x:hidden;
 }
-
-/* ================= HEADER ================= */
 
 header{
     position:sticky;
@@ -36,16 +31,17 @@ header{
     justify-content:space-between;
     align-items:center;
     background:rgba(0,0,0,.94);
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(14px);
     border-bottom:1px solid #d4af37;
 }
 
 .logo{
     color:#d4af37;
-    font-size:22px;
+    font-size:21px;
     font-weight:bold;
     letter-spacing:2px;
-    text-shadow:0 0 12px rgba(212,175,55,.7);
+    cursor:pointer;
+    text-shadow:0 0 15px rgba(212,175,55,.7);
 }
 
 nav a{
@@ -55,50 +51,40 @@ nav a{
     transition:.3s;
 }
 
-nav a:hover{
-    color:#d4af37;
-}
-
-/* ================= HERO ================= */
+nav a:hover{color:#d4af37;}
 
 .hero{
-    min-height:650px;
+    min-height:680px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:60px 20px;
+    padding:70px 20px;
     position:relative;
     overflow:hidden;
-
     background:
-    radial-gradient(
-        circle at 50% 35%,
-        #4a3608 0%,
-        #171205 20%,
-        #050505 65%
-    );
+    radial-gradient(circle at 50% 35%,#4a3608 0%,#171205 20%,#050505 65%);
 }
 
 .hero:before,
 .hero:after{
     content:"";
     position:absolute;
-    border:1px solid rgba(212,175,55,.22);
+    border:1px solid rgba(212,175,55,.2);
     border-radius:50%;
-    animation:rotate 16s linear infinite;
+    animation:rotate 18s linear infinite;
 }
 
 .hero:before{
-    width:330px;
-    height:330px;
+    width:340px;
+    height:340px;
 }
 
 .hero:after{
-    width:500px;
-    height:500px;
+    width:540px;
+    height:540px;
     animation-direction:reverse;
-    animation-duration:22s;
+    animation-duration:25s;
 }
 
 .hero-content{
@@ -106,21 +92,16 @@ nav a:hover{
     z-index:5;
 }
 
-/* ================= BRAND TITLE ================= */
-
 .brand-title{
     position:relative;
     cursor:pointer;
     user-select:none;
     -webkit-tap-highlight-color:transparent;
-
-    font-size:clamp(45px,8vw,90px);
+    font-size:clamp(42px,8vw,90px);
     line-height:1.05;
     letter-spacing:5px;
-
     color:#d4af37;
     text-transform:uppercase;
-
     text-shadow:
         1px 1px 0 #8a6b19,
         2px 2px 0 #705514,
@@ -128,530 +109,145 @@ nav a:hover{
         0 0 18px rgba(212,175,55,.9),
         0 0 40px rgba(212,175,55,.35),
         0 0 80px rgba(212,175,55,.2);
-
     animation:titleFloat 3s ease-in-out infinite;
-
-    transform-style:preserve-3d;
-
-    transition:
-        text-shadow .2s,
-        filter .2s;
+    transition:.2s;
 }
-
-/* futuristic glow ring behind title */
 
 .brand-title:before{
     content:"";
     position:absolute;
     left:50%;
     top:50%;
-
     width:115%;
     height:150%;
-
-    transform:
-        translate(-50%,-50%)
-        rotateX(65deg);
-
+    transform:translate(-50%,-50%) rotateX(65deg);
     border:1px solid rgba(212,175,55,.12);
     border-radius:50%;
-
     pointer-events:none;
 }
 
-/* ================= TOUCH ENERGY ================= */
+/* ================= BURN OUT ================= */
 
-.brand-title.energy{
+.brand-title.burn{
     animation:
-        titleShake .08s infinite,
-        goldFlash .18s infinite alternate;
+        burnShake .07s infinite,
+        burnOut 1.8s cubic-bezier(.16,1,.3,1) forwards;
 }
 
-/* ================= SHAKE ================= */
+@keyframes burnShake{
+    0%{transform:translate(0,0) rotate(0);}
+    25%{transform:translate(-5px,2px) rotate(-1deg);}
+    50%{transform:translate(5px,-2px) rotate(1deg);}
+    75%{transform:translate(-3px,-2px) rotate(-1deg);}
+    100%{transform:translate(0,0) rotate(0);}
+}
 
-@keyframes titleShake{
-
+@keyframes burnOut{
     0%{
-        transform:
-            translate(0,0)
-            rotateX(0)
-            rotateY(0)
-            rotateZ(0);
+        transform:scale(1);
+        opacity:1;
+        filter:brightness(1) blur(0);
+        letter-spacing:5px;
     }
 
     20%{
-        transform:
-            translate(-8px,3px)
-            rotateX(3deg)
-            rotateY(-4deg)
-            rotateZ(-1deg);
-    }
-
-    40%{
-        transform:
-            translate(8px,-3px)
-            rotateX(-3deg)
-            rotateY(4deg)
-            rotateZ(1deg);
-    }
-
-    60%{
-        transform:
-            translate(-6px,-4px)
-            rotateX(4deg)
-            rotateY(-5deg)
-            rotateZ(-1deg);
-    }
-
-    80%{
-        transform:
-            translate(6px,4px)
-            rotateX(-4deg)
-            rotateY(5deg)
-            rotateZ(1deg);
-    }
-
-    100%{
-        transform:
-            translate(0,0)
-            rotateX(0)
-            rotateY(0)
-            rotateZ(0);
-    }
-}
-
-/* ================= BLAST + 3D RECONSTRUCT ================= */
-
-.brand-title.blast{
-
-    animation:
-        titleBlast 2.4s cubic-bezier(.16,1,.3,1) forwards;
-}
-
-@keyframes titleBlast{
-
-    0%{
-        transform:
-            scale(1)
-            rotateX(0)
-            rotateY(0)
-            rotateZ(0);
-
-        opacity:1;
-        filter:brightness(1) blur(0);
-
-        letter-spacing:5px;
-
+        transform:scale(1.08);
+        filter:brightness(2);
         text-shadow:
-            0 0 20px rgba(212,175,55,.9);
+            0 0 15px #d4af37,
+            0 0 40px #ffb300,
+            0 0 80px #ff6a00;
     }
 
-    12%{
-        transform:
-            scale(1.08)
-            rotateX(8deg)
-            rotateY(-8deg)
-            rotateZ(-1deg);
-
-        filter:brightness(1.8);
-
-        letter-spacing:8px;
-    }
-
-    28%{
-        transform:
-            scale(1.25)
-            rotateX(-12deg)
-            rotateY(15deg)
-            rotateZ(2deg);
-
-        filter:
-            brightness(2.5)
-            blur(1px);
-
+    45%{
+        transform:scale(1.35) rotateX(12deg);
+        opacity:.8;
+        filter:brightness(3) blur(2px);
         letter-spacing:15px;
     }
 
-    43%{
-        transform:
-            scale(1.5)
-            rotateX(20deg)
-            rotateY(-20deg)
-            rotateZ(-3deg);
-
-        opacity:.75;
-
-        filter:
-            brightness(3)
-            blur(3px);
-
-        letter-spacing:24px;
-    }
-
-    56%{
-        transform:
-            scale(1.8)
-            rotateX(-30deg)
-            rotateY(30deg)
-            rotateZ(4deg);
-
-        opacity:.3;
-
-        filter:
-            brightness(4)
-            blur(8px);
-
-        letter-spacing:34px;
-    }
-
     65%{
-        transform:
-            scale(2.1)
-            rotateX(40deg)
-            rotateY(-40deg);
+        transform:scale(1.8) rotateX(-20deg);
+        opacity:.15;
+        filter:brightness(4) blur(10px);
+        letter-spacing:30px;
+    }
 
+    75%{
+        transform:scale(.5) rotateX(30deg);
         opacity:0;
-
-        filter:
-            brightness(5)
-            blur(15px);
-
-        letter-spacing:42px;
+        filter:blur(16px);
     }
 
-    /* RECONSTRUCT */
-
-    72%{
-        transform:
-            scale(.45)
-            rotateX(-55deg)
-            rotateY(55deg);
-
-        opacity:0;
-
-        filter:
-            blur(14px);
-
-        letter-spacing:20px;
-    }
-
-    80%{
-        transform:
-            scale(.68)
-            rotateX(35deg)
-            rotateY(-35deg);
-
-        opacity:.25;
-
-        filter:
-            blur(8px);
-
-        letter-spacing:13px;
-    }
-
-    89%{
-        transform:
-            scale(.92)
-            rotateX(-12deg)
-            rotateY(12deg);
-
-        opacity:.7;
-
-        filter:
-            blur(3px);
-
-        letter-spacing:7px;
-    }
-
-    96%{
-        transform:
-            scale(1.06)
-            rotateX(4deg)
-            rotateY(-4deg);
-
-        opacity:.95;
-
-        filter:
-            brightness(1.5)
-            blur(1px);
-
-        letter-spacing:5px;
+    88%{
+        transform:scale(.85);
+        opacity:.5;
+        filter:blur(4px);
+        letter-spacing:8px;
     }
 
     100%{
-        transform:
-            scale(1)
-            rotateX(0)
-            rotateY(0)
-            rotateZ(0);
-
+        transform:scale(1);
         opacity:1;
-
-        filter:
-            brightness(1)
-            blur(0);
-
+        filter:brightness(1) blur(0);
         letter-spacing:5px;
-    }
-}
-
-/* ================= GOLD FLASH ================= */
-
-@keyframes goldFlash{
-
-    from{
-        filter:brightness(1);
-    }
-
-    to{
-        filter:brightness(2.2);
-    }
-}
-
-/* ================= FLOAT ================= */
-
-@keyframes titleFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-}
-
-/* ================= ENERGY PARTICLES ================= */
-
-.energy-particle{
-    position:absolute;
-
-    width:6px;
-    height:6px;
-
-    background:#d4af37;
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 8px #d4af37,
-        0 0 20px #d4af37;
-
-    pointer-events:none;
-
-    z-index:4;
-
-    animation:
-        explodeParticle 1.4s ease-out forwards;
-}
-
-@keyframes explodeParticle{
-
-    0%{
-        transform:
-            translate(0,0)
-            scale(1);
-
-        opacity:1;
-    }
-
-    100%{
-        transform:
-            translate(
-                var(--x),
-                var(--y)
-            )
-            scale(0);
-
-        opacity:0;
     }
 }
 
 /* ================= FIXED PRICE ================= */
 
 .fixed-price{
-
-    margin-top:24px;
+    margin-top:28px;
     display:inline-block;
-    position:relative;
-
-    padding:11px 22px;
-
+    padding:13px 24px;
     color:#fff0a6;
-
     font-size:17px;
     font-weight:bold;
-
     letter-spacing:1.5px;
-
-    border:1px solid rgba(212,175,55,.7);
+    border:1px solid rgba(212,175,55,.8);
     border-radius:30px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(212,175,55,.05),
-            rgba(212,175,55,.25),
-            rgba(212,175,55,.05)
-        );
-
+    background:linear-gradient(
+        90deg,
+        rgba(212,175,55,.04),
+        rgba(212,175,55,.25),
+        rgba(212,175,55,.04)
+    );
     box-shadow:
-        0 0 12px rgba(212,175,55,.25),
+        0 0 18px rgba(212,175,55,.25),
         inset 0 0 15px rgba(212,175,55,.08);
-
-    overflow:hidden;
-
     opacity:0;
     visibility:hidden;
-
-    transform:
-        scale(.5)
-        translateY(20px);
 }
 
 .fixed-price.show{
-
     visibility:visible;
-
     animation:
-        priceConstruct 1.2s cubic-bezier(.16,1,.3,1) forwards,
-        priceFloat 3s ease-in-out 1.2s infinite,
-        priceGlow 2s ease-in-out 1.2s infinite alternate;
+        priceIn .8s ease forwards,
+        priceGlow 2s ease-in-out .8s infinite alternate;
 }
 
-.fixed-price span{
-
-    display:inline-block;
-
-    animation:
-        kingMove 2.5s ease-in-out infinite;
-}
-
-.fixed-price:after{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-100%;
-
-    width:70%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.55),
-            transparent
-        );
-
-    transform:skewX(-20deg);
-
-    animation:priceShine 3s infinite;
-}
-
-@keyframes priceConstruct{
-
-    0%{
+@keyframes priceIn{
+    from{
         opacity:0;
-        transform:
-            scale(.3)
-            rotateX(80deg);
-
-        filter:blur(12px);
+        transform:scale(.5) translateY(20px);
+        filter:blur(10px);
     }
-
-    25%{
-        opacity:.25;
-        transform:
-            scale(1.25)
-            rotateX(-20deg);
-
-        filter:blur(6px);
-    }
-
-    50%{
-        opacity:.6;
-        transform:
-            scale(.88)
-            rotateX(12deg);
-
-        filter:blur(3px);
-    }
-
-    75%{
+    to{
         opacity:1;
-        transform:
-            scale(1.08)
-            rotateX(-4deg);
-
+        transform:scale(1);
         filter:blur(0);
-    }
-
-    100%{
-        opacity:1;
-        transform:
-            scale(1)
-            rotateX(0);
-
-        filter:blur(0);
-    }
-}
-
-@keyframes priceFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-4px);
     }
 }
 
 @keyframes priceGlow{
-
-    from{
-        box-shadow:
-            0 0 8px rgba(212,175,55,.2);
-    }
-
-    to{
-        box-shadow:
-            0 0 25px rgba(212,175,55,.55);
-    }
+    from{box-shadow:0 0 10px rgba(212,175,55,.2);}
+    to{box-shadow:0 0 30px rgba(212,175,55,.6);}
 }
-
-@keyframes kingMove{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.05);
-    }
-}
-
-@keyframes priceShine{
-
-    0%{
-        left:-100%;
-    }
-
-    60%,100%{
-        left:130%;
-    }
-}
-
-/* ================= HERO TEXT ================= */
 
 .tagline{
-    margin-top:18px;
-    font-size:20px;
-    color:#eee;
+    margin-top:20px;
+    font-size:21px;
+    font-weight:bold;
 }
 
 .sub{
@@ -659,322 +255,217 @@ nav a:hover{
     margin-top:10px;
 }
 
-/* ================= BUTTONS ================= */
-
 .btn{
-
     display:inline-block;
-
     padding:14px 28px;
-
-    margin:18px 5px 5px;
-
+    margin:20px 5px 5px;
     border-radius:8px;
-
     text-decoration:none;
-
     font-weight:bold;
-
     color:#000;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff0a6,
-            #d4af37,
-            #fff0a6
-        );
-
+    background:linear-gradient(135deg,#fff0a6,#d4af37,#fff0a6);
     background-size:200% 200%;
-
-    box-shadow:
-        0 8px 20px rgba(212,175,55,.25);
-
+    box-shadow:0 8px 20px rgba(212,175,55,.25);
     transition:.3s;
-
     animation:shine 3s infinite;
 }
 
 .btn:hover{
-
-    transform:
-        translateY(-5px)
-        scale(1.04);
-
-    box-shadow:
-        0 15px 30px rgba(212,175,55,.5);
+    transform:translateY(-4px) scale(1.04);
+    box-shadow:0 15px 30px rgba(212,175,55,.5);
 }
 
 .whatsapp{
-
     display:inline-block;
-
     padding:11px 17px;
-
     margin:18px 5px 5px;
-
     border-radius:7px;
-
     background:#25D366;
-
     color:#fff;
-
     text-decoration:none;
-
     font-weight:bold;
-
     transition:.3s;
 }
 
 .whatsapp:hover{
-
-    transform:
-        translateY(-3px)
-        scale(1.04);
-
-    box-shadow:
-        0 8px 20px rgba(37,211,102,.4);
+    transform:translateY(-3px) scale(1.04);
+    box-shadow:0 8px 20px rgba(37,211,102,.4);
 }
 
 @keyframes shine{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
 
+@keyframes titleFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+/* ================= PARTICLES ================= */
+
+.energy-particle{
+    position:fixed;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#d4af37;
+    box-shadow:
+        0 0 8px #d4af37,
+        0 0 20px #ff9d00;
+    pointer-events:none;
+    z-index:9999;
+    animation:explode 1.2s ease-out forwards;
+}
+
+@keyframes explode{
     0%{
-        background-position:0% 50%;
+        transform:translate(0,0) scale(1.5);
+        opacity:1;
     }
-
-    50%{
-        background-position:100% 50%;
-    }
-
     100%{
-        background-position:0% 50%;
+        transform:translate(var(--x),var(--y)) scale(0);
+        opacity:0;
     }
 }
 
-/* ================= SECTION ================= */
+/* ================= SECTIONS ================= */
 
 section{
-    padding:70px 6%;
+    padding:75px 6%;
 }
 
 .title{
-
     text-align:center;
-
     color:#d4af37;
-
     font-size:32px;
-
     margin-bottom:40px;
-
-    text-shadow:
-        0 0 15px rgba(212,175,55,.35);
+    text-shadow:0 0 15px rgba(212,175,55,.35);
 }
 
-/* ================= CATEGORY ================= */
+/* ================= CATEGORIES ================= */
 
 .categories{
-
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:22px;
 }
 
 .category{
-
     padding:35px 15px;
-
     text-align:center;
-
     border:1px solid #3d331a;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #181818,
-            #090909
-        );
-
-    box-shadow:
-        8px 8px 20px #000,
-        -5px -5px 15px #191919;
-
+    border-radius:18px;
+    background:linear-gradient(145deg,#181818,#090909);
+    box-shadow:8px 8px 20px #000,-5px -5px 15px #191919;
     transition:.4s;
-
-    transform-style:preserve-3d;
 }
 
 .category:hover{
-
-    transform:
-        perspective(600px)
-        rotateX(8deg)
-        rotateY(-8deg)
-        translateY(-10px);
-
+    transform:translateY(-10px);
     border-color:#d4af37;
-
-    box-shadow:
-        0 15px 35px
-        rgba(212,175,55,.18);
+    box-shadow:0 15px 35px rgba(212,175,55,.2);
 }
 
 .icon{
-
     font-size:48px;
-
     display:block;
-
     margin-bottom:15px;
-
-    filter:
-        drop-shadow(0 8px 5px #000);
 }
 
 .category h3{
-
     color:#d4af37;
-
     margin-bottom:8px;
 }
 
 /* ================= PRODUCTS ================= */
 
 .products{
-
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:24px;
 }
 
 .product{
-
-    background:
-        linear-gradient(
-            145deg,
-            #181818,
-            #080808
-        );
-
+    background:linear-gradient(145deg,#181818,#080808);
     border:1px solid #333;
-
-    border-radius:15px;
-
+    border-radius:18px;
     overflow:hidden;
-
     text-align:center;
-
     transition:.4s;
-
-    transform-style:preserve-3d;
 }
 
 .product:hover{
-
-    transform:
-        perspective(700px)
-        rotateY(-5deg)
-        translateY(-10px);
-
+    transform:translateY(-10px);
     border-color:#d4af37;
-
-    box-shadow:
-        0 18px 35px
-        rgba(212,175,55,.18);
+    box-shadow:0 18px 35px rgba(212,175,55,.2);
 }
 
-/* ================= PRODUCT IMAGE ================= */
+/* PHOTO PLACEHOLDER */
 
 .product-img{
-
-    height:230px;
-
+    height:250px;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     position:relative;
-
     background:
-        radial-gradient(
-            circle,
-            #333,
-            #111 65%
-        );
-
+        radial-gradient(circle at center,#383838,#111 70%);
     color:#777;
-
-    font-size:15px;
-
     text-decoration:none;
+    overflow:hidden;
+}
 
-    cursor:pointer;
+.product-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.photo-placeholder{
+    width:80%;
+    height:80%;
+    border:1px dashed #777;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:8px;
+    color:#aaa;
+}
+
+.photo-placeholder strong{
+    color:#d4af37;
 }
 
 .product-img:before{
-
     content:"NEW ARRIVAL";
-
     position:absolute;
-
     top:12px;
     left:12px;
-
-    font-size:11px;
-
+    font-size:10px;
     padding:5px 8px;
-
     border-radius:5px;
-
     color:#000;
-
     background:#d4af37;
-
     font-weight:bold;
-
-    z-index:2;
+    z-index:3;
 }
 
 .watch{
-
-    padding:12px 18px;
-
+    position:absolute;
+    bottom:15px;
+    padding:10px 16px;
     border-radius:25px;
-
-    background:rgba(0,0,0,.75);
-
+    background:rgba(0,0,0,.8);
     color:#fff;
-
     border:1px solid #d4af37;
-
     font-weight:bold;
-
-    box-shadow:
-        0 0 15px rgba(212,175,55,.25);
-
-    transition:.3s;
+    z-index:4;
 }
-
-.product-img:hover .watch{
-
-    transform:scale(1.08);
-
-    background:#d4af37;
-
-    color:#000;
-}
-
-/* ================= PRODUCT INFO ================= */
 
 .product-info{
     padding:20px;
@@ -985,175 +476,130 @@ section{
 }
 
 .price{
-
     color:#d4af37;
-
     font-size:21px;
-
     font-weight:bold;
-
     margin-bottom:13px;
 }
-
-/* ================= STOCK ================= */
 
 .stock-box{
     margin:12px 0 17px;
 }
 
 .stock-text{
-
     font-size:14px;
-
     color:#aaa;
-
     margin-bottom:8px;
 }
 
 .stock-number{
-
     color:#fff;
-
     font-weight:bold;
 }
 
 .stock-bar{
-
     width:100%;
-
     height:7px;
-
     background:#292929;
-
     border-radius:10px;
-
     overflow:hidden;
 }
 
 .stock-fill{
-
     height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #8a6b19,
-            #d4af37,
-            #fff0a6
-        );
-
+    background:linear-gradient(90deg,#8a6b19,#d4af37,#fff0a6);
     border-radius:10px;
-
-    transition:.5s;
 }
 
 /* ================= CONTACT ================= */
 
 .info{
-
     text-align:center;
-
     background:
-        radial-gradient(
-            circle at center,
-            #17120a,
-            #080808 65%
-        );
-
+        radial-gradient(circle at center,#17120a,#080808 65%);
     border-top:1px solid #222;
 }
 
 .info p{
-
     margin:12px 0;
-
     color:#ddd;
+}
+
+.map{
+    width:100%;
+    max-width:900px;
+    height:300px;
+    margin:30px auto 10px;
+    border:1px solid #d4af37;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.map iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+/* ================= SOCIAL ================= */
+
+.socials{
+    margin-top:25px;
+}
+
+.social-btn{
+    display:inline-block;
+    padding:12px 20px;
+    margin:6px;
+    border:1px solid #d4af37;
+    border-radius:25px;
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.social-btn:hover{
+    background:#d4af37;
+    color:#000;
+    transform:translateY(-3px);
 }
 
 /* ================= FOOTER ================= */
 
 footer{
-
     text-align:center;
-
-    padding:28px;
-
+    padding:30px;
     background:#000;
-
     border-top:1px solid #333;
-
     color:#999;
 }
 
 /* ================= FLOATING LIGHTS ================= */
 
 .light{
-
     position:absolute;
-
     width:5px;
     height:5px;
-
     background:#d4af37;
-
     border-radius:50%;
-
-    box-shadow:
-        0 0 12px #d4af37;
-
-    animation:
-        particle 6s linear infinite;
+    box-shadow:0 0 12px #d4af37;
+    animation:particle 6s linear infinite;
 }
 
-.l1{
-    left:15%;
-    bottom:-10px;
-}
-
-.l2{
-    left:35%;
-    bottom:-20px;
-    animation-delay:2s;
-}
-
-.l3{
-    right:20%;
-    bottom:-15px;
-    animation-delay:1s;
-}
-
-.l4{
-    right:40%;
-    bottom:-20px;
-    animation-delay:3s;
-}
+.l1{left:15%;bottom:-10px;}
+.l2{left:35%;bottom:-20px;animation-delay:2s;}
+.l3{right:20%;bottom:-15px;animation-delay:1s;}
+.l4{right:40%;bottom:-20px;animation-delay:3s;}
 
 @keyframes particle{
-
-    0%{
-        transform:translateY(0);
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(-650px);
-        opacity:0;
-    }
+    0%{transform:translateY(0);opacity:0;}
+    20%{opacity:1;}
+    100%{transform:translateY(-650px);opacity:0;}
 }
 
 @keyframes rotate{
-
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
+    from{transform:rotate(0);}
+    to{transform:rotate(360deg);}
 }
 
 /* ================= MOBILE ================= */
@@ -1162,14 +608,11 @@ footer{
 
     .categories,
     .products{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     header{
-
         flex-direction:column;
-
         gap:12px;
     }
 
@@ -1186,20 +629,16 @@ footer{
     }
 
     .hero{
-        min-height:620px;
+        min-height:650px;
     }
 
     .brand-title{
-
-        font-size:43px;
-
+        font-size:40px;
         letter-spacing:2px;
     }
 
     .fixed-price{
-
-        font-size:14px;
-
+        font-size:13px;
         padding:10px 15px;
     }
 
@@ -1210,49 +649,48 @@ footer{
     section{
         padding:55px 5%;
     }
+
+    .product-img{
+        height:270px;
+    }
+
+    nav{
+        white-space:nowrap;
+    }
+
+    nav a{
+        font-size:13px;
+    }
 }
 
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header>
 
-    <div class="logo">
+    <div class="logo" onclick="activateIFC()">
         IFC COLLECTION
     </div>
 
     <nav>
-
-        <a href="#home">
-            Home
-        </a>
-
-        <a href="#categories">
-            Categories
-        </a>
-
-        <a href="#products">
-            Products
-        </a>
-
-        <a href="#contact">
-            Contact
-        </a>
-
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
     </nav>
 
 </header>
 
-
-<!-- ================= HERO ================= -->
-
-<section
-    class="hero"
-    id="home">
+<section class="hero" id="home">
 
     <span class="light l1"></span>
     <span class="light l2"></span>
@@ -1261,29 +699,14 @@ footer{
 
     <div class="hero-content">
 
-        <!-- MAIN CLICKABLE BRAND -->
-
-        <h1
-            class="brand-title"
-            id="brandTitle"
-            onclick="activateIFC()">
-
+        <h1 class="brand-title" id="brandTitle">
             IFC COLLECTION
-
         </h1>
 
-        <!-- FIXED PRICE -->
-
-        <div
-            class="fixed-price"
-            id="fixedPrice">
-
-            <span>
-                👑 FIXED PRICE 👑
-                <br>
-                KING &amp; QUEEN NEVER BARGAIN
-            </span>
-
+        <div class="fixed-price" id="fixedPrice">
+            👑 FIXED PRICE 👑
+            <br>
+            KING &amp; QUEEN NEVER BARGAIN
         </div>
 
         <div class="tagline">
@@ -1302,126 +725,75 @@ footer{
             Men • Women • Kids • Shoes
         </div>
 
-        <a
-            class="btn"
-            href="#products">
-
+        <a class="btn" href="#products">
             🛍️ SHOP NOW
-
         </a>
 
-        <a
-            class="whatsapp"
-            href="https://wa.me/9779824260099">
-
+        <a class="whatsapp"
+           href="https://wa.me/9779824260099?text=Hello%20Imran%20Fashion%20Collection%2C%20I%20want%20to%20place%20an%20order."
+           target="_blank">
             💬 WHATSAPP ORDER
-
         </a>
 
     </div>
-
 </section>
 
+<section id="categories">
 
-<!-- ================= CATEGORIES ================= -->
-
-<section
-    id="categories">
-
-    <h2 class="title">
-        SHOP BY CATEGORY
-    </h2>
+    <h2 class="title">SHOP BY CATEGORY</h2>
 
     <div class="categories">
 
         <div class="category">
-
-            <span class="icon">
-                👔
-            </span>
-
-            <h3>
-                MEN
-            </h3>
-
-            <p>
-                Trending Fashion
-            </p>
-
+            <span class="icon">👔</span>
+            <h3>MEN</h3>
+            <p>Trending Fashion</p>
         </div>
 
         <div class="category">
-
-            <span class="icon">
-                👗
-            </span>
-
-            <h3>
-                WOMEN
-            </h3>
-
-            <p>
-                Latest Collection
-            </p>
-
+            <span class="icon">👗</span>
+            <h3>WOMEN</h3>
+            <p>Latest Collection</p>
         </div>
 
         <div class="category">
-
-            <span class="icon">
-                🧒
-            </span>
-
-            <h3>
-                KIDS
-            </h3>
-
-            <p>
-                Kids Fashion
-            </p>
-
+            <span class="icon">🧒</span>
+            <h3>KIDS</h3>
+            <p>Kids Fashion</p>
         </div>
 
         <div class="category">
-
-            <span class="icon">
-                👟
-            </span>
-
-            <h3>
-                SHOES
-            </h3>
-
-            <p>
-                Fashion Footwear
-            </p>
-
+            <span class="icon">👟</span>
+            <h3>SHOES</h3>
+            <p>Fashion Footwear</p>
         </div>
 
     </div>
-
 </section>
 
+<section id="products">
 
-<!-- ================= PRODUCTS ================= -->
-
-<section
-    id="products">
-
-    <h2 class="title">
-        NEW ARRIVALS
-    </h2>
+    <h2 class="title">NEW ARRIVALS</h2>
 
     <div class="products">
 
-        <!-- DRAGON T-SHIRT -->
+        <!-- PRODUCT 1 -->
 
         <div class="product">
 
-            <a
-                class="product-img"
-                href="https://vt.tiktok.com/ZSqo6fSUx/"
-                target="_blank">
+            <a class="product-img"
+               href="https://vt.tiktok.com/ZSqo6fSUx/"
+               target="_blank">
+
+                <!-- आफ्नो फोटो राख्दा तलको placeholder हटाएर
+                     <img src="dragon-tshirt.jpg" alt="Dragon Print T-Shirt">
+                     राख्नुहोस् -->
+
+                <div class="photo-placeholder">
+                    📸
+                    <strong>PRODUCT PHOTO</strong>
+                    <span>Dragon T-Shirt</span>
+                </div>
 
                 <span class="watch">
                     ▶️ WATCH TIKTOK
@@ -1431,58 +803,45 @@ footer{
 
             <div class="product-info">
 
-                <h3>
-                    Dragon Print T-Shirt
-                </h3>
+                <h3>Dragon Print T-Shirt</h3>
 
-                <div class="price">
-                    Rs. 750
-                </div>
+                <div class="price">Rs. 750</div>
 
                 <div class="stock-box">
 
                     <div class="stock-text">
-
                         Available:
-
-                        <span class="stock-number">
-                            12 pcs
-                        </span>
-
+                        <span class="stock-number">12 pcs</span>
                     </div>
 
                     <div class="stock-bar">
-
-                        <div
-                            class="stock-fill"
-                            style="width:60%;">
-                        </div>
-
+                        <div class="stock-fill" style="width:60%;"></div>
                     </div>
 
                 </div>
 
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/9779824260099">
-
+                <a class="whatsapp"
+                   href="https://wa.me/9779824260099?text=Hello%20IFC%20Collection%2C%20I%20want%20to%20order%20Dragon%20Print%20T-Shirt%20for%20Rs.%20750."
+                   target="_blank">
                     💬 ORDER
-
                 </a>
 
             </div>
-
         </div>
 
-
-        <!-- POLKA DOT JOGGERS -->
+        <!-- PRODUCT 2 -->
 
         <div class="product">
 
-            <a
-                class="product-img"
-                href="https://vt.tiktok.com/ZSqo65cYC/"
-                target="_blank">
+            <a class="product-img"
+               href="https://vt.tiktok.com/ZSqo65cYC/"
+               target="_blank">
+
+                <div class="photo-placeholder">
+                    📸
+                    <strong>PRODUCT PHOTO</strong>
+                    <span>Polka Dot Joggers</span>
+                </div>
 
                 <span class="watch">
                     ▶️ WATCH TIKTOK
@@ -1492,58 +851,45 @@ footer{
 
             <div class="product-info">
 
-                <h3>
-                    Polka Dot Joggers
-                </h3>
+                <h3>Polka Dot Joggers</h3>
 
-                <div class="price">
-                    Rs. 1000
-                </div>
+                <div class="price">Rs. 1000</div>
 
                 <div class="stock-box">
 
                     <div class="stock-text">
-
                         Available:
-
-                        <span class="stock-number">
-                            8 pcs
-                        </span>
-
+                        <span class="stock-number">8 pcs</span>
                     </div>
 
                     <div class="stock-bar">
-
-                        <div
-                            class="stock-fill"
-                            style="width:40%;">
-                        </div>
-
+                        <div class="stock-fill" style="width:40%;"></div>
                     </div>
 
                 </div>
 
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/9779824260099">
-
+                <a class="whatsapp"
+                   href="https://wa.me/9779824260099?text=Hello%20IFC%20Collection%2C%20I%20want%20to%20order%20Polka%20Dot%20Joggers%20for%20Rs.%201000."
+                   target="_blank">
                     💬 ORDER
-
                 </a>
 
             </div>
-
         </div>
 
-
-        <!-- RAJASTHANI KURTA -->
+        <!-- PRODUCT 3 -->
 
         <div class="product">
 
-            <a
-                class="product-img"
-                href="https://vt.tiktok.com/ZSqo6ugVK/"
-                target="_blank">
+            <a class="product-img"
+               href="https://vt.tiktok.com/ZSqo6ugVK/"
+               target="_blank">
+
+                <div class="photo-placeholder">
+                    📸
+                    <strong>PRODUCT PHOTO</strong>
+                    <span>Rajasthani Kurta</span>
+                </div>
 
                 <span class="watch">
                     ▶️ WATCH TIKTOK
@@ -1553,55 +899,43 @@ footer{
 
             <div class="product-info">
 
-                <h3>
-                    Rajasthani Kurta
-                </h3>
+                <h3>Rajasthani Kurta</h3>
 
-                <div class="price">
-                    Rs. 1250
-                </div>
+                <div class="price">Rs. 1250</div>
 
                 <div class="stock-box">
 
                     <div class="stock-text">
-
                         Available:
-
-                        <span class="stock-number">
-                            5 pcs
-                        </span>
-
+                        <span class="stock-number">5 pcs</span>
                     </div>
 
                     <div class="stock-bar">
-
-                        <div
-                            class="stock-fill"
-                            style="width:25%;">
-                        </div>
-
+                        <div class="stock-fill" style="width:25%;"></div>
                     </div>
 
                 </div>
 
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/9779824260099">
-
+                <a class="whatsapp"
+                   href="https://wa.me/9779824260099?text=Hello%20IFC%20Collection%2C%20I%20want%20to%20order%20Rajasthani%20Kurta%20for%20Rs.%201250."
+                   target="_blank">
                     💬 ORDER
-
                 </a>
 
             </div>
-
         </div>
 
-
-        <!-- SHOES -->
+        <!-- PRODUCT 4 -->
 
         <div class="product">
 
             <div class="product-img">
+
+                <div class="photo-placeholder">
+                    👟
+                    <strong>PRODUCT PHOTO</strong>
+                    <span>Gents Shoes</span>
+                </div>
 
                 <span class="watch">
                     👟 VIDEO COMING SOON
@@ -1611,94 +945,80 @@ footer{
 
             <div class="product-info">
 
-                <h3>
-                    Gents Shoes
-                </h3>
+                <h3>Gents Shoes</h3>
 
-                <div class="price">
-                    Rs. 1400
-                </div>
+                <div class="price">Rs. 1400</div>
 
                 <div class="stock-box">
 
                     <div class="stock-text">
-
                         Available:
-
-                        <span class="stock-number">
-                            10 pcs
-                        </span>
-
+                        <span class="stock-number">10 pcs</span>
                     </div>
 
                     <div class="stock-bar">
-
-                        <div
-                            class="stock-fill"
-                            style="width:50%;">
-                        </div>
-
+                        <div class="stock-fill" style="width:50%;"></div>
                     </div>
 
                 </div>
 
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/9779824260099">
-
+                <a class="whatsapp"
+                   href="https://wa.me/9779824260099?text=Hello%20IFC%20Collection%2C%20I%20want%20to%20order%20Gents%20Shoes%20for%20Rs.%201400."
+                   target="_blank">
                     💬 ORDER
-
                 </a>
 
             </div>
-
         </div>
 
     </div>
-
 </section>
 
-
-<!-- ================= CONTACT ================= -->
-
-<section
-    class="info"
-    id="contact">
+<section class="info" id="contact">
 
     <h2 class="title">
         IMRAN FASHION COLLECTION
     </h2>
 
-    <p>
-        📍 Pokharichowk, Parbatipur-21, Bharatpur
-    </p>
+    <p>📍 Pokharichowk, Parbatipur-21, Bharatpur</p>
 
-    <p>
-        🚚 Delivery All Over Nepal
-    </p>
+    <p>🚚 Delivery All Over Nepal</p>
 
-    <p>
-        💵 Cash on Delivery Available
-    </p>
+    <p>💵 Cash on Delivery Available</p>
 
-    <p>
-        📞 9824260099 / 9761078220 / 9845155586
-    </p>
+    <p>📞 9824260099 / 9761078220 / 9845155586</p>
 
-    <br>
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps?q=Pokharichowk,+Parbatipur-21,+Bharatpur,+Nepal&output=embed"
+            loading="lazy"
+            allowfullscreen>
+        </iframe>
+    </div>
 
-    <a
-        class="btn"
-        href="https://wa.me/9779824260099">
-
+    <a class="btn"
+       href="https://wa.me/9779824260099?text=Hello%20Imran%20Fashion%20Collection%2C%20I%20want%20to%20place%20an%20order."
+       target="_blank">
         💬 WHATSAPP US
-
     </a>
 
+    <div class="socials">
+
+        <a class="social-btn"
+           href="https://www.tiktok.com/"
+           target="_blank">
+            🎵 TikTok
+        </a>
+
+        <a class="social-btn"
+           href="https://www.instagram.com/"
+           target="_blank">
+            📸 Instagram
+        </a>
+
+    </div>
+
 </section>
-
-
-<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -1710,183 +1030,14 @@ footer{
 
 </footer>
 
-
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-/* ==========================================
-   IFC FUTURISTIC TOUCH SYSTEM
-   ========================================== */
-
-let animationTimer1;
-let animationTimer2;
-let animationTimer3;
-
-
-/* ==========================================
-   FUTURISTIC AUDIO
-   ========================================== */
-
-function playWelcomeAudio(){
-
-    try{
-
-        /*
-         * Cancel previous speech so every touch
-         * immediately creates a fresh welcome.
-         */
-
-        if("speechSynthesis" in window){
-
-            window.speechSynthesis.cancel();
-
-            const speech =
-                new SpeechSynthesisUtterance(
-                    "Welcome to Imran Fashion Collection"
-                );
-
-            speech.lang = "en-US";
-
-            speech.rate = 0.82;
-
-            speech.pitch = 0.65;
-
-            speech.volume = 1;
-
-            /*
-             * Try premium sounding system voices
-             */
-
-            const voices =
-                window.speechSynthesis.getVoices();
-
-            const preferred =
-                voices.find(v =>
-                    /Google US English/i.test(v.name)
-                ) ||
-                voices.find(v =>
-                    /Microsoft David/i.test(v.name)
-                ) ||
-                voices.find(v =>
-                    /Microsoft Mark/i.test(v.name)
-                ) ||
-                voices.find(v =>
-                    /Samantha/i.test(v.name)
-                ) ||
-                voices.find(v =>
-                    /Alex/i.test(v.name)
-                );
-
-            if(preferred){
-                speech.voice = preferred;
-            }
-
-            window.speechSynthesis.speak(speech);
-        }
-
-    }catch(error){
-
-        console.log(
-            "Welcome audio unavailable:",
-            error
-        );
-
-    }
-
-}
-
-
-/* ==========================================
-   FUTURISTIC ELECTRONIC SOUND
-   ========================================== */
-
-function playFutureSound(){
-
-    try{
-
-        const AudioContext =
-            window.AudioContext ||
-            window.webkitAudioContext;
-
-        if(!AudioContext){
-            return;
-        }
-
-        const audio =
-            new AudioContext();
-
-        const oscillator =
-            audio.createOscillator();
-
-        const gain =
-            audio.createGain();
-
-        oscillator.type = "sawtooth";
-
-        oscillator.frequency.setValueAtTime(
-            180,
-            audio.currentTime
-        );
-
-        oscillator.frequency.exponentialRampToValueAtTime(
-            900,
-            audio.currentTime + 0.22
-        );
-
-        gain.gain.setValueAtTime(
-            0.0001,
-            audio.currentTime
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            0.08,
-            audio.currentTime + 0.03
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            0.0001,
-            audio.currentTime + 0.38
-        );
-
-        oscillator.connect(gain);
-
-        gain.connect(audio.destination);
-
-        oscillator.start();
-
-        oscillator.stop(
-            audio.currentTime + 0.4
-        );
-
-        setTimeout(function(){
-
-            audio.close();
-
-        },600);
-
-    }catch(error){
-
-        console.log(
-            "Future sound unavailable:",
-            error
-        );
-
-    }
-
-}
-
-
-/* ==========================================
-   PARTICLE BLAST
-   ========================================== */
+let animationRunning = false;
 
 function createExplosion(){
 
     const title =
-        document.getElementById(
-            "brandTitle"
-        );
+        document.getElementById("brandTitle");
 
     const rect =
         title.getBoundingClientRect();
@@ -1897,22 +1048,13 @@ function createExplosion(){
     const centerY =
         rect.top + rect.height / 2;
 
-    for(
-        let i = 0;
-        i < 45;
-        i++
-    ){
+    for(let i=0;i<60;i++){
 
         const particle =
-            document.createElement(
-                "span"
-            );
+            document.createElement("span");
 
         particle.className =
             "energy-particle";
-
-        particle.style.position =
-            "fixed";
 
         particle.style.left =
             centerX + "px";
@@ -1921,215 +1063,69 @@ function createExplosion(){
             centerY + "px";
 
         const angle =
-            Math.random() *
-            Math.PI *
-            2;
+            Math.random() * Math.PI * 2;
 
         const distance =
-            100 +
-            Math.random() * 300;
-
-        const x =
-            Math.cos(angle) *
-            distance;
-
-        const y =
-            Math.sin(angle) *
-            distance;
+            100 + Math.random() * 350;
 
         particle.style.setProperty(
             "--x",
-            x + "px"
+            Math.cos(angle) * distance + "px"
         );
 
         particle.style.setProperty(
             "--y",
-            y + "px"
+            Math.sin(angle) * distance + "px"
         );
 
-        document.body.appendChild(
-            particle
-        );
+        document.body.appendChild(particle);
 
-        setTimeout(function(){
-
+        setTimeout(()=>{
             particle.remove();
-
-        },1500);
-
+        },1300);
     }
-
 }
-
-
-/* ==========================================
-   MAIN IFC TOUCH ANIMATION
-   ========================================== */
 
 function activateIFC(){
 
+    if(animationRunning) return;
+
+    animationRunning = true;
+
     const title =
-        document.getElementById(
-            "brandTitle"
-        );
+        document.getElementById("brandTitle");
 
     const fixedPrice =
-        document.getElementById(
-            "fixedPrice"
-        );
+        document.getElementById("fixedPrice");
 
+    title.classList.remove("burn");
 
-    /*
-     * EVERY CLICK / TOUCH
-     * starts everything again.
-     */
-
-    clearTimeout(
-        animationTimer1
-    );
-
-    clearTimeout(
-        animationTimer2
-    );
-
-    clearTimeout(
-        animationTimer3
-    );
-
-
-    /* ================= AUDIO ================= */
-
-    playFutureSound();
-
-    setTimeout(function(){
-
-        playWelcomeAudio();
-
-    },120);
-
-
-    /* ================= RESET ================= */
-
-    title.classList.remove(
-        "energy",
-        "blast"
-    );
-
-    fixedPrice.classList.remove(
-        "show"
-    );
-
-
-    /*
-     * Force browser to restart CSS animation.
-     */
+    fixedPrice.classList.remove("show");
 
     void title.offsetWidth;
 
+    title.classList.add("burn");
 
-    /* ================= ENERGY SHAKE ================= */
+    createExplosion();
 
-    title.classList.add(
-        "energy"
-    );
+    setTimeout(()=>{
 
+        fixedPrice.classList.add("show");
 
-    /*
-     * 2 seconds futuristic shake
-     */
+    },1500);
 
-    animationTimer1 =
-        setTimeout(function(){
+    setTimeout(()=>{
 
-            title.classList.remove(
-                "energy"
-            );
+        title.classList.remove("burn");
 
-            void title.offsetWidth;
+        animationRunning = false;
 
-            title.classList.add(
-                "blast"
-            );
-
-            createExplosion();
-
-        },2000);
-
-
-    /*
-     * Blast + reconstruct finished.
-     */
-
-    animationTimer2 =
-        setTimeout(function(){
-
-            title.classList.remove(
-                "blast"
-            );
-
-            void title.offsetWidth;
-
-
-            /*
-             * Fixed price constructs
-             * immediately after title.
-             */
-
-            fixedPrice.classList.add(
-                "show"
-            );
-
-        },4400);
-
-
-    /*
-     * Keep animation ready for next touch.
-     */
-
-    animationTimer3 =
-        setTimeout(function(){
-
-            title.classList.remove(
-                "blast",
-                "energy"
-            );
-
-        },6000);
-
+    },1900);
 }
-
-
-/* ==========================================
-   MOBILE TOUCH SUPPORT
-   ========================================== */
 
 document
     .getElementById("brandTitle")
-    .addEventListener(
-        "touchstart",
-        function(){
-
-            activateIFC();
-
-        },
-        {
-            passive:true
-        }
-    );
-
-
-/*
- * Load speech voices when browser provides them.
- */
-
-if(
-    "speechSynthesis" in window
-){
-
-    window.speechSynthesis
-        .getVoices();
-
-}
+    .addEventListener("click",activateIFC);
 
 </script>
 
