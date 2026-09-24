@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Imran Fashion Collection | IFC</title>
+<title>IFC Collection | Imran Fashion Collection</title>
 
 <style>
 
@@ -112,10 +112,11 @@ nav a:hover{
     position:relative;
     cursor:pointer;
     user-select:none;
+    -webkit-tap-highlight-color:transparent;
 
-    font-size:clamp(38px,7vw,76px);
+    font-size:clamp(45px,8vw,90px);
     line-height:1.05;
-    letter-spacing:3px;
+    letter-spacing:5px;
 
     color:#d4af37;
     text-transform:uppercase;
@@ -125,137 +126,276 @@ nav a:hover{
         2px 2px 0 #705514,
         3px 3px 0 #4d3a0e,
         0 0 18px rgba(212,175,55,.9),
-        0 0 40px rgba(212,175,55,.35);
+        0 0 40px rgba(212,175,55,.35),
+        0 0 80px rgba(212,175,55,.2);
 
     animation:titleFloat 3s ease-in-out infinite;
+
+    transform-style:preserve-3d;
+
+    transition:
+        text-shadow .2s,
+        filter .2s;
 }
 
+/* futuristic glow ring behind title */
+
+.brand-title:before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+
+    width:115%;
+    height:150%;
+
+    transform:
+        translate(-50%,-50%)
+        rotateX(65deg);
+
+    border:1px solid rgba(212,175,55,.12);
+    border-radius:50%;
+
+    pointer-events:none;
+}
+
+/* ================= TOUCH ENERGY ================= */
+
+.brand-title.energy{
+    animation:
+        titleShake .08s infinite,
+        goldFlash .18s infinite alternate;
+}
 
 /* ================= SHAKE ================= */
-
-.brand-title.shake{
-
-    animation:
-        titleShake .10s infinite,
-        goldFlash .25s infinite alternate;
-}
 
 @keyframes titleShake{
 
     0%{
-        transform:translate(0,0) rotate(0deg);
+        transform:
+            translate(0,0)
+            rotateX(0)
+            rotateY(0)
+            rotateZ(0);
     }
 
     20%{
-        transform:translate(-7px,2px) rotate(-1deg);
+        transform:
+            translate(-8px,3px)
+            rotateX(3deg)
+            rotateY(-4deg)
+            rotateZ(-1deg);
     }
 
     40%{
-        transform:translate(7px,-2px) rotate(1deg);
+        transform:
+            translate(8px,-3px)
+            rotateX(-3deg)
+            rotateY(4deg)
+            rotateZ(1deg);
     }
 
     60%{
-        transform:translate(-5px,-3px) rotate(-1deg);
+        transform:
+            translate(-6px,-4px)
+            rotateX(4deg)
+            rotateY(-5deg)
+            rotateZ(-1deg);
     }
 
     80%{
-        transform:translate(5px,3px) rotate(1deg);
+        transform:
+            translate(6px,4px)
+            rotateX(-4deg)
+            rotateY(5deg)
+            rotateZ(1deg);
     }
 
     100%{
-        transform:translate(0,0) rotate(0deg);
+        transform:
+            translate(0,0)
+            rotateX(0)
+            rotateY(0)
+            rotateZ(0);
     }
 }
 
-
-/* ================= BLAST / BROCK + CONSTRUCT ================= */
+/* ================= BLAST + 3D RECONSTRUCT ================= */
 
 .brand-title.blast{
 
     animation:
-        titleBlast 2s cubic-bezier(.16,1,.3,1) forwards;
+        titleBlast 2.4s cubic-bezier(.16,1,.3,1) forwards;
 }
 
 @keyframes titleBlast{
 
-    /* NORMAL */
-
     0%{
-        transform:scale(1);
+        transform:
+            scale(1)
+            rotateX(0)
+            rotateY(0)
+            rotateZ(0);
+
         opacity:1;
-        filter:blur(0);
-        letter-spacing:3px;
+        filter:brightness(1) blur(0);
+
+        letter-spacing:5px;
+
+        text-shadow:
+            0 0 20px rgba(212,175,55,.9);
     }
 
-    /* START BREAK */
+    12%{
+        transform:
+            scale(1.08)
+            rotateX(8deg)
+            rotateY(-8deg)
+            rotateZ(-1deg);
 
-    15%{
-        transform:scale(1.08) rotate(-1deg);
-        opacity:1;
-        filter:brightness(1.5);
+        filter:brightness(1.8);
+
+        letter-spacing:8px;
+    }
+
+    28%{
+        transform:
+            scale(1.25)
+            rotateX(-12deg)
+            rotateY(15deg)
+            rotateZ(2deg);
+
+        filter:
+            brightness(2.5)
+            blur(1px);
+
+        letter-spacing:15px;
+    }
+
+    43%{
+        transform:
+            scale(1.5)
+            rotateX(20deg)
+            rotateY(-20deg)
+            rotateZ(-3deg);
+
+        opacity:.75;
+
+        filter:
+            brightness(3)
+            blur(3px);
+
+        letter-spacing:24px;
+    }
+
+    56%{
+        transform:
+            scale(1.8)
+            rotateX(-30deg)
+            rotateY(30deg)
+            rotateZ(4deg);
+
+        opacity:.3;
+
+        filter:
+            brightness(4)
+            blur(8px);
+
+        letter-spacing:34px;
+    }
+
+    65%{
+        transform:
+            scale(2.1)
+            rotateX(40deg)
+            rotateY(-40deg);
+
+        opacity:0;
+
+        filter:
+            brightness(5)
+            blur(15px);
+
+        letter-spacing:42px;
+    }
+
+    /* RECONSTRUCT */
+
+    72%{
+        transform:
+            scale(.45)
+            rotateX(-55deg)
+            rotateY(55deg);
+
+        opacity:0;
+
+        filter:
+            blur(14px);
+
+        letter-spacing:20px;
+    }
+
+    80%{
+        transform:
+            scale(.68)
+            rotateX(35deg)
+            rotateY(-35deg);
+
+        opacity:.25;
+
+        filter:
+            blur(8px);
+
+        letter-spacing:13px;
+    }
+
+    89%{
+        transform:
+            scale(.92)
+            rotateX(-12deg)
+            rotateY(12deg);
+
+        opacity:.7;
+
+        filter:
+            blur(3px);
+
         letter-spacing:7px;
     }
 
-    /* EXPAND */
+    96%{
+        transform:
+            scale(1.06)
+            rotateX(4deg)
+            rotateY(-4deg);
 
-    35%{
-        transform:scale(1.30) rotate(2deg);
-        opacity:.9;
-        filter:brightness(2) blur(1px);
-        letter-spacing:14px;
-    }
+        opacity:.95;
 
-    /* BREAK */
+        filter:
+            brightness(1.5)
+            blur(1px);
 
-    52%{
-        transform:scale(1.65) rotate(-3deg);
-        opacity:.35;
-        filter:blur(7px);
-        letter-spacing:27px;
-    }
-
-    /* BLAST */
-
-    65%{
-        transform:scale(1.9);
-        opacity:0;
-        filter:blur(12px);
-        letter-spacing:35px;
-    }
-
-    /* ================= CONSTRUCT ================= */
-
-    74%{
-        transform:scale(.65);
-        opacity:0;
-        filter:blur(10px);
-        letter-spacing:18px;
-    }
-
-    83%{
-        transform:scale(.82);
-        opacity:.25;
-        filter:blur(6px);
-        letter-spacing:12px;
-    }
-
-    91%{
-        transform:scale(1.04);
-        opacity:.75;
-        filter:blur(2px);
         letter-spacing:5px;
     }
 
-    /* BACK TO NORMAL */
-
     100%{
-        transform:scale(1);
+        transform:
+            scale(1)
+            rotateX(0)
+            rotateY(0)
+            rotateZ(0);
+
         opacity:1;
-        filter:blur(0);
-        letter-spacing:3px;
+
+        filter:
+            brightness(1)
+            blur(0);
+
+        letter-spacing:5px;
     }
 }
 
+/* ================= GOLD FLASH ================= */
 
 @keyframes goldFlash{
 
@@ -264,10 +404,11 @@ nav a:hover{
     }
 
     to{
-        filter:brightness(1.8);
+        filter:brightness(2.2);
     }
 }
 
+/* ================= FLOAT ================= */
 
 @keyframes titleFloat{
 
@@ -280,6 +421,51 @@ nav a:hover{
     }
 }
 
+/* ================= ENERGY PARTICLES ================= */
+
+.energy-particle{
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    background:#d4af37;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 8px #d4af37,
+        0 0 20px #d4af37;
+
+    pointer-events:none;
+
+    z-index:4;
+
+    animation:
+        explodeParticle 1.4s ease-out forwards;
+}
+
+@keyframes explodeParticle{
+
+    0%{
+        transform:
+            translate(0,0)
+            scale(1);
+
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+
+        opacity:0;
+    }
+}
 
 /* ================= FIXED PRICE ================= */
 
@@ -315,15 +501,13 @@ nav a:hover{
 
     overflow:hidden;
 
-    /* HIDDEN UNTIL TITLE CONSTRUCTS */
-
     opacity:0;
     visibility:hidden;
-    transform:scale(.5) translateY(20px);
+
+    transform:
+        scale(.5)
+        translateY(20px);
 }
-
-
-/* FIXED PRICE CONSTRUCT */
 
 .fixed-price.show{
 
@@ -335,14 +519,13 @@ nav a:hover{
         priceGlow 2s ease-in-out 1.2s infinite alternate;
 }
 
-
 .fixed-price span{
 
     display:inline-block;
 
-    animation:kingMove 2.5s ease-in-out infinite;
+    animation:
+        kingMove 2.5s ease-in-out infinite;
 }
-
 
 .fixed-price:after{
 
@@ -369,42 +552,53 @@ nav a:hover{
     animation:priceShine 3s infinite;
 }
 
-
-/* PRICE CONSTRUCTION */
-
 @keyframes priceConstruct{
 
     0%{
         opacity:0;
-        transform:scale(.3) rotateX(80deg);
+        transform:
+            scale(.3)
+            rotateX(80deg);
+
         filter:blur(12px);
     }
 
     25%{
         opacity:.25;
-        transform:scale(1.25) rotateX(-20deg);
+        transform:
+            scale(1.25)
+            rotateX(-20deg);
+
         filter:blur(6px);
     }
 
     50%{
         opacity:.6;
-        transform:scale(.88) rotateX(12deg);
+        transform:
+            scale(.88)
+            rotateX(12deg);
+
         filter:blur(3px);
     }
 
     75%{
         opacity:1;
-        transform:scale(1.08) rotateX(-4deg);
+        transform:
+            scale(1.08)
+            rotateX(-4deg);
+
         filter:blur(0);
     }
 
     100%{
         opacity:1;
-        transform:scale(1) rotateX(0);
+        transform:
+            scale(1)
+            rotateX(0);
+
         filter:blur(0);
     }
 }
-
 
 @keyframes priceFloat{
 
@@ -416,7 +610,6 @@ nav a:hover{
         transform:translateY(-4px);
     }
 }
-
 
 @keyframes priceGlow{
 
@@ -431,7 +624,6 @@ nav a:hover{
     }
 }
 
-
 @keyframes kingMove{
 
     0%,100%{
@@ -443,7 +635,6 @@ nav a:hover{
     }
 }
 
-
 @keyframes priceShine{
 
     0%{
@@ -454,7 +645,6 @@ nav a:hover{
         left:130%;
     }
 }
-
 
 /* ================= HERO TEXT ================= */
 
@@ -468,7 +658,6 @@ nav a:hover{
     color:#bbb;
     margin-top:10px;
 }
-
 
 /* ================= BUTTONS ================= */
 
@@ -516,7 +705,6 @@ nav a:hover{
         0 15px 30px rgba(212,175,55,.5);
 }
 
-
 .whatsapp{
 
     display:inline-block;
@@ -548,7 +736,6 @@ nav a:hover{
         0 8px 20px rgba(37,211,102,.4);
 }
 
-
 @keyframes shine{
 
     0%{
@@ -563,7 +750,6 @@ nav a:hover{
         background-position:0% 50%;
     }
 }
-
 
 /* ================= SECTION ================= */
 
@@ -585,7 +771,6 @@ section{
         0 0 15px rgba(212,175,55,.35);
 }
 
-
 /* ================= CATEGORY ================= */
 
 .categories{
@@ -597,7 +782,6 @@ section{
 
     gap:22px;
 }
-
 
 .category{
 
@@ -625,7 +809,6 @@ section{
     transform-style:preserve-3d;
 }
 
-
 .category:hover{
 
     transform:
@@ -641,7 +824,6 @@ section{
         rgba(212,175,55,.18);
 }
 
-
 .icon{
 
     font-size:48px;
@@ -654,14 +836,12 @@ section{
         drop-shadow(0 8px 5px #000);
 }
 
-
 .category h3{
 
     color:#d4af37;
 
     margin-bottom:8px;
 }
-
 
 /* ================= PRODUCTS ================= */
 
@@ -674,7 +854,6 @@ section{
 
     gap:24px;
 }
-
 
 .product{
 
@@ -698,7 +877,6 @@ section{
     transform-style:preserve-3d;
 }
 
-
 .product:hover{
 
     transform:
@@ -713,8 +891,7 @@ section{
         rgba(212,175,55,.18);
 }
 
-
-/* PRODUCT VIDEO */
+/* ================= PRODUCT IMAGE ================= */
 
 .product-img{
 
@@ -744,7 +921,6 @@ section{
     cursor:pointer;
 }
 
-
 .product-img:before{
 
     content:"NEW ARRIVAL";
@@ -769,7 +945,6 @@ section{
     z-index:2;
 }
 
-
 .watch{
 
     padding:12px 18px;
@@ -790,7 +965,6 @@ section{
     transition:.3s;
 }
 
-
 .product-img:hover .watch{
 
     transform:scale(1.08);
@@ -799,7 +973,6 @@ section{
 
     color:#000;
 }
-
 
 /* ================= PRODUCT INFO ================= */
 
@@ -821,7 +994,6 @@ section{
 
     margin-bottom:13px;
 }
-
 
 /* ================= STOCK ================= */
 
@@ -845,7 +1017,6 @@ section{
     font-weight:bold;
 }
 
-
 .stock-bar{
 
     width:100%;
@@ -858,7 +1029,6 @@ section{
 
     overflow:hidden;
 }
-
 
 .stock-fill{
 
@@ -877,40 +1047,6 @@ section{
     transition:.5s;
 }
 
-
-/* ================= OUT OF STOCK ================= */
-
-.out-stock{
-
-    color:#ff4b4b;
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    margin:15px 0;
-
-    text-shadow:
-        0 0 10px rgba(255,0,0,.35);
-}
-
-
-.disabled-order{
-
-    display:inline-block;
-
-    padding:10px 15px;
-
-    border-radius:7px;
-
-    background:#333;
-
-    color:#777;
-
-    cursor:not-allowed;
-}
-
-
 /* ================= CONTACT ================= */
 
 .info{
@@ -927,14 +1063,12 @@ section{
     border-top:1px solid #222;
 }
 
-
 .info p{
 
     margin:12px 0;
 
     color:#ddd;
 }
-
 
 /* ================= FOOTER ================= */
 
@@ -950,7 +1084,6 @@ footer{
 
     color:#999;
 }
-
 
 /* ================= FLOATING LIGHTS ================= */
 
@@ -971,7 +1104,6 @@ footer{
     animation:
         particle 6s linear infinite;
 }
-
 
 .l1{
     left:15%;
@@ -996,7 +1128,6 @@ footer{
     animation-delay:3s;
 }
 
-
 @keyframes particle{
 
     0%{
@@ -1014,7 +1145,6 @@ footer{
     }
 }
 
-
 @keyframes rotate{
 
     from{
@@ -1025,7 +1155,6 @@ footer{
         transform:rotate(360deg);
     }
 }
-
 
 /* ================= MOBILE ================= */
 
@@ -1049,7 +1178,6 @@ footer{
     }
 }
 
-
 @media(max-width:550px){
 
     .categories,
@@ -1063,9 +1191,9 @@ footer{
 
     .brand-title{
 
-        font-size:39px;
+        font-size:43px;
 
-        letter-spacing:1px;
+        letter-spacing:2px;
     }
 
     .fixed-price{
@@ -1087,16 +1215,14 @@ footer{
 </style>
 </head>
 
-
 <body>
-
 
 <!-- ================= HEADER ================= -->
 
 <header>
 
     <div class="logo">
-        IFC
+        IFC COLLECTION
     </div>
 
     <nav>
@@ -1128,27 +1254,23 @@ footer{
     class="hero"
     id="home">
 
-
     <span class="light l1"></span>
     <span class="light l2"></span>
     <span class="light l3"></span>
     <span class="light l4"></span>
 
-
     <div class="hero-content">
 
+        <!-- MAIN CLICKABLE BRAND -->
 
         <h1
             class="brand-title"
             id="brandTitle"
-            data-text="IMRAN FASHION COLLECTION"
-            onclick="crackTitle()">
+            onclick="activateIFC()">
 
-            IMRAN FASHION<br>
-            COLLECTION
+            IFC COLLECTION
 
         </h1>
-
 
         <!-- FIXED PRICE -->
 
@@ -1164,21 +1286,21 @@ footer{
 
         </div>
 
-
         <div class="tagline">
             FASHION FOR EVERYONE
         </div>
 
+        <div class="sub">
+            Imran Fashion Collection
+        </div>
 
         <div class="sub">
             Quality Fashion • Reasonable Price
         </div>
 
-
         <div class="sub">
             Men • Women • Kids • Shoes
         </div>
-
 
         <a
             class="btn"
@@ -1188,7 +1310,6 @@ footer{
 
         </a>
 
-
         <a
             class="whatsapp"
             href="https://wa.me/9779824260099">
@@ -1196,7 +1317,6 @@ footer{
             💬 WHATSAPP ORDER
 
         </a>
-
 
     </div>
 
@@ -1208,16 +1328,11 @@ footer{
 <section
     id="categories">
 
-
     <h2 class="title">
         SHOP BY CATEGORY
     </h2>
 
-
     <div class="categories">
-
-
-        <!-- MEN -->
 
         <div class="category">
 
@@ -1235,9 +1350,6 @@ footer{
 
         </div>
 
-
-        <!-- WOMEN -->
-
         <div class="category">
 
             <span class="icon">
@@ -1253,9 +1365,6 @@ footer{
             </p>
 
         </div>
-
-
-        <!-- KIDS -->
 
         <div class="category">
 
@@ -1273,9 +1382,6 @@ footer{
 
         </div>
 
-
-        <!-- SHOES -->
-
         <div class="category">
 
             <span class="icon">
@@ -1292,7 +1398,6 @@ footer{
 
         </div>
 
-
     </div>
 
 </section>
@@ -1303,19 +1408,15 @@ footer{
 <section
     id="products">
 
-
     <h2 class="title">
         NEW ARRIVALS
     </h2>
 
-
     <div class="products">
-
 
         <!-- DRAGON T-SHIRT -->
 
         <div class="product">
-
 
             <a
                 class="product-img"
@@ -1323,27 +1424,22 @@ footer{
                 target="_blank">
 
                 <span class="watch">
-                    ▶ WATCH TIKTOK
+                    ▶️ WATCH TIKTOK
                 </span>
 
             </a>
 
-
             <div class="product-info">
-
 
                 <h3>
                     Dragon Print T-Shirt
                 </h3>
 
-
                 <div class="price">
                     Rs. 750
                 </div>
 
-
                 <div class="stock-box">
-
 
                     <div class="stock-text">
 
@@ -1355,20 +1451,16 @@ footer{
 
                     </div>
 
-
                     <div class="stock-bar">
 
                         <div
                             class="stock-fill"
                             style="width:60%;">
-
                         </div>
 
                     </div>
 
-
                 </div>
-
 
                 <a
                     class="whatsapp"
@@ -1377,7 +1469,6 @@ footer{
                     💬 ORDER
 
                 </a>
-
 
             </div>
 
@@ -1388,34 +1479,28 @@ footer{
 
         <div class="product">
 
-
             <a
                 class="product-img"
                 href="https://vt.tiktok.com/ZSqo65cYC/"
                 target="_blank">
 
                 <span class="watch">
-                    ▶ WATCH TIKTOK
+                    ▶️ WATCH TIKTOK
                 </span>
 
             </a>
 
-
             <div class="product-info">
-
 
                 <h3>
                     Polka Dot Joggers
                 </h3>
 
-
                 <div class="price">
                     Rs. 1000
                 </div>
 
-
                 <div class="stock-box">
-
 
                     <div class="stock-text">
 
@@ -1427,20 +1512,16 @@ footer{
 
                     </div>
 
-
                     <div class="stock-bar">
 
                         <div
                             class="stock-fill"
                             style="width:40%;">
-
                         </div>
 
                     </div>
 
-
                 </div>
-
 
                 <a
                     class="whatsapp"
@@ -1449,7 +1530,6 @@ footer{
                     💬 ORDER
 
                 </a>
-
 
             </div>
 
@@ -1460,34 +1540,28 @@ footer{
 
         <div class="product">
 
-
             <a
                 class="product-img"
                 href="https://vt.tiktok.com/ZSqo6ugVK/"
                 target="_blank">
 
                 <span class="watch">
-                    ▶ WATCH TIKTOK
+                    ▶️ WATCH TIKTOK
                 </span>
 
             </a>
 
-
             <div class="product-info">
-
 
                 <h3>
                     Rajasthani Kurta
                 </h3>
 
-
                 <div class="price">
                     Rs. 1250
                 </div>
 
-
                 <div class="stock-box">
-
 
                     <div class="stock-text">
 
@@ -1499,20 +1573,16 @@ footer{
 
                     </div>
 
-
                     <div class="stock-bar">
 
                         <div
                             class="stock-fill"
                             style="width:25%;">
-
                         </div>
 
                     </div>
 
-
                 </div>
-
 
                 <a
                     class="whatsapp"
@@ -1521,7 +1591,6 @@ footer{
                     💬 ORDER
 
                 </a>
-
 
             </div>
 
@@ -1532,7 +1601,6 @@ footer{
 
         <div class="product">
 
-
             <div class="product-img">
 
                 <span class="watch">
@@ -1541,22 +1609,17 @@ footer{
 
             </div>
 
-
             <div class="product-info">
-
 
                 <h3>
                     Gents Shoes
                 </h3>
 
-
                 <div class="price">
                     Rs. 1400
                 </div>
 
-
                 <div class="stock-box">
-
 
                     <div class="stock-text">
 
@@ -1568,20 +1631,16 @@ footer{
 
                     </div>
 
-
                     <div class="stock-bar">
 
                         <div
                             class="stock-fill"
                             style="width:50%;">
-
                         </div>
 
                     </div>
 
-
                 </div>
-
 
                 <a
                     class="whatsapp"
@@ -1591,11 +1650,9 @@ footer{
 
                 </a>
 
-
             </div>
 
         </div>
-
 
     </div>
 
@@ -1608,34 +1665,27 @@ footer{
     class="info"
     id="contact">
 
-
     <h2 class="title">
         IMRAN FASHION COLLECTION
     </h2>
-
 
     <p>
         📍 Pokharichowk, Parbatipur-21, Bharatpur
     </p>
 
-
     <p>
         🚚 Delivery All Over Nepal
     </p>
-
 
     <p>
         💵 Cash on Delivery Available
     </p>
 
-
     <p>
         📞 9824260099 / 9761078220 / 9845155586
     </p>
 
-
     <br>
-
 
     <a
         class="btn"
@@ -1644,7 +1694,6 @@ footer{
         💬 WHATSAPP US
 
     </a>
-
 
 </section>
 
@@ -1666,114 +1715,423 @@ footer{
 
 <script>
 
+/* ==========================================
+   IFC FUTURISTIC TOUCH SYSTEM
+   ========================================== */
 
-let titleAnimating = false;
+let animationTimer1;
+let animationTimer2;
+let animationTimer3;
 
 
-function crackTitle(){
+/* ==========================================
+   FUTURISTIC AUDIO
+   ========================================== */
 
+function playWelcomeAudio(){
 
-    /* Prevent double click during animation */
+    try{
 
-    if(titleAnimating){
-        return;
+        /*
+         * Cancel previous speech so every touch
+         * immediately creates a fresh welcome.
+         */
+
+        if("speechSynthesis" in window){
+
+            window.speechSynthesis.cancel();
+
+            const speech =
+                new SpeechSynthesisUtterance(
+                    "Welcome to Imran Fashion Collection"
+                );
+
+            speech.lang = "en-US";
+
+            speech.rate = 0.82;
+
+            speech.pitch = 0.65;
+
+            speech.volume = 1;
+
+            /*
+             * Try premium sounding system voices
+             */
+
+            const voices =
+                window.speechSynthesis.getVoices();
+
+            const preferred =
+                voices.find(v =>
+                    /Google US English/i.test(v.name)
+                ) ||
+                voices.find(v =>
+                    /Microsoft David/i.test(v.name)
+                ) ||
+                voices.find(v =>
+                    /Microsoft Mark/i.test(v.name)
+                ) ||
+                voices.find(v =>
+                    /Samantha/i.test(v.name)
+                ) ||
+                voices.find(v =>
+                    /Alex/i.test(v.name)
+                );
+
+            if(preferred){
+                speech.voice = preferred;
+            }
+
+            window.speechSynthesis.speak(speech);
+        }
+
+    }catch(error){
+
+        console.log(
+            "Welcome audio unavailable:",
+            error
+        );
+
     }
-
-
-    titleAnimating = true;
-
-
-    const title =
-        document.getElementById("brandTitle");
-
-
-    const fixedPrice =
-        document.getElementById("fixedPrice");
-
-
-    /* ================= RESET ================= */
-
-    title.classList.remove("shake");
-    title.classList.remove("blast");
-
-    fixedPrice.classList.remove("show");
-
-
-    /*
-       Force browser to restart animation
-    */
-
-    void title.offsetWidth;
-
-
-    /* ================= SHAKE ================= */
-
-    title.classList.add("shake");
-
-
-    /*
-       SHAKE = 2 SECONDS
-    */
-
-    setTimeout(function(){
-
-
-        title.classList.remove("shake");
-
-
-        void title.offsetWidth;
-
-
-        /* ================= BLAST ================= */
-
-        title.classList.add("blast");
-
-
-    },2000);
-
-
-    /*
-       SHAKE 2 sec
-       +
-       BLAST + CONSTRUCT 2 sec
-       =
-       4 sec
-    */
-
-    setTimeout(function(){
-
-
-        title.classList.remove("blast");
-
-
-        void title.offsetWidth;
-
-
-        /* ================= FIXED PRICE ================= */
-
-        fixedPrice.classList.add("show");
-
-
-    },4000);
-
-
-    /*
-       Animation completely finished
-    */
-
-    setTimeout(function(){
-
-
-        titleAnimating = false;
-
-
-    },5500);
 
 }
 
 
-</script>
+/* ==========================================
+   FUTURISTIC ELECTRONIC SOUND
+   ========================================== */
 
+function playFutureSound(){
+
+    try{
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if(!AudioContext){
+            return;
+        }
+
+        const audio =
+            new AudioContext();
+
+        const oscillator =
+            audio.createOscillator();
+
+        const gain =
+            audio.createGain();
+
+        oscillator.type = "sawtooth";
+
+        oscillator.frequency.setValueAtTime(
+            180,
+            audio.currentTime
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            900,
+            audio.currentTime + 0.22
+        );
+
+        gain.gain.setValueAtTime(
+            0.0001,
+            audio.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.08,
+            audio.currentTime + 0.03
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            audio.currentTime + 0.38
+        );
+
+        oscillator.connect(gain);
+
+        gain.connect(audio.destination);
+
+        oscillator.start();
+
+        oscillator.stop(
+            audio.currentTime + 0.4
+        );
+
+        setTimeout(function(){
+
+            audio.close();
+
+        },600);
+
+    }catch(error){
+
+        console.log(
+            "Future sound unavailable:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   PARTICLE BLAST
+   ========================================== */
+
+function createExplosion(){
+
+    const title =
+        document.getElementById(
+            "brandTitle"
+        );
+
+    const rect =
+        title.getBoundingClientRect();
+
+    const centerX =
+        rect.left + rect.width / 2;
+
+    const centerY =
+        rect.top + rect.height / 2;
+
+    for(
+        let i = 0;
+        i < 45;
+        i++
+    ){
+
+        const particle =
+            document.createElement(
+                "span"
+            );
+
+        particle.className =
+            "energy-particle";
+
+        particle.style.position =
+            "fixed";
+
+        particle.style.left =
+            centerX + "px";
+
+        particle.style.top =
+            centerY + "px";
+
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
+
+        const distance =
+            100 +
+            Math.random() * 300;
+
+        const x =
+            Math.cos(angle) *
+            distance;
+
+        const y =
+            Math.sin(angle) *
+            distance;
+
+        particle.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+        particle.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+        document.body.appendChild(
+            particle
+        );
+
+        setTimeout(function(){
+
+            particle.remove();
+
+        },1500);
+
+    }
+
+}
+
+
+/* ==========================================
+   MAIN IFC TOUCH ANIMATION
+   ========================================== */
+
+function activateIFC(){
+
+    const title =
+        document.getElementById(
+            "brandTitle"
+        );
+
+    const fixedPrice =
+        document.getElementById(
+            "fixedPrice"
+        );
+
+
+    /*
+     * EVERY CLICK / TOUCH
+     * starts everything again.
+     */
+
+    clearTimeout(
+        animationTimer1
+    );
+
+    clearTimeout(
+        animationTimer2
+    );
+
+    clearTimeout(
+        animationTimer3
+    );
+
+
+    /* ================= AUDIO ================= */
+
+    playFutureSound();
+
+    setTimeout(function(){
+
+        playWelcomeAudio();
+
+    },120);
+
+
+    /* ================= RESET ================= */
+
+    title.classList.remove(
+        "energy",
+        "blast"
+    );
+
+    fixedPrice.classList.remove(
+        "show"
+    );
+
+
+    /*
+     * Force browser to restart CSS animation.
+     */
+
+    void title.offsetWidth;
+
+
+    /* ================= ENERGY SHAKE ================= */
+
+    title.classList.add(
+        "energy"
+    );
+
+
+    /*
+     * 2 seconds futuristic shake
+     */
+
+    animationTimer1 =
+        setTimeout(function(){
+
+            title.classList.remove(
+                "energy"
+            );
+
+            void title.offsetWidth;
+
+            title.classList.add(
+                "blast"
+            );
+
+            createExplosion();
+
+        },2000);
+
+
+    /*
+     * Blast + reconstruct finished.
+     */
+
+    animationTimer2 =
+        setTimeout(function(){
+
+            title.classList.remove(
+                "blast"
+            );
+
+            void title.offsetWidth;
+
+
+            /*
+             * Fixed price constructs
+             * immediately after title.
+             */
+
+            fixedPrice.classList.add(
+                "show"
+            );
+
+        },4400);
+
+
+    /*
+     * Keep animation ready for next touch.
+     */
+
+    animationTimer3 =
+        setTimeout(function(){
+
+            title.classList.remove(
+                "blast",
+                "energy"
+            );
+
+        },6000);
+
+}
+
+
+/* ==========================================
+   MOBILE TOUCH SUPPORT
+   ========================================== */
+
+document
+    .getElementById("brandTitle")
+    .addEventListener(
+        "touchstart",
+        function(){
+
+            activateIFC();
+
+        },
+        {
+            passive:true
+        }
+    );
+
+
+/*
+ * Load speech voices when browser provides them.
+ */
+
+if(
+    "speechSynthesis" in window
+){
+
+    window.speechSynthesis
+        .getVoices();
+
+}
+
+</script>
 
 </body>
 </html>
