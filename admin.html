@@ -491,7 +491,7 @@ async function addProduct(){
             const { error: uploadError } =
             await supabaseClient
             .storage
-            .from("Products")
+            .from("products")
             .upload(
                 filePath,
                 file
@@ -508,7 +508,7 @@ async function addProduct(){
             const { data: publicData } =
             supabaseClient
             .storage
-            .from("Products")
+            .from("products")
             .getPublicUrl(filePath);
 
 
