@@ -6,6 +6,8 @@
 
 <title>IFC Admin Panel</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 *{
     margin:0;
@@ -78,10 +80,11 @@ button{
     color:#000;
     font-weight:bold;
     font-size:16px;
+    cursor:pointer;
 }
 
-button:active{
-    transform:scale(.98);
+button:disabled{
+    opacity:.6;
 }
 
 .photo-box{
@@ -101,6 +104,29 @@ button:active{
     display:none;
 }
 
+.status{
+    margin-top:15px;
+    padding:12px;
+    border-radius:8px;
+    display:none;
+    text-align:center;
+}
+
+.success{
+    background:#123b20;
+    color:#7cff9b;
+}
+
+.error{
+    background:#3b1212;
+    color:#ff8a8a;
+}
+
+.logout{
+    background:#333;
+    color:#fff;
+}
+
 .back{
     display:block;
     text-align:center;
@@ -118,59 +144,125 @@ button:active{
 <h1>👑 IFC ADMIN</h1>
 <p class="subtitle">Imran Fashion Collection</p>
 
+<!-- LOGIN -->
+<div class="card" id="loginBox">
+
+<h2>🔐 Admin Login</h2>
+
+<label>Email</label>
+<input type="email" id="email" placeholder="Your Supabase email">
+
+<label>Password</label>
+<input type="password" id="password" placeholder="Your password">
+
+<button onclick="login()">
+    🔐 LOGIN
+</button>
+
+<div id="loginStatus" class="status"></div>
+
+</div>
+
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" style="display:none;">
+
 <div class="card">
+
+<h2>➕ Add New Product</h2>
 
 <label>Product Photo</label>
 
 <div class="photo-box">
-    📸 Select Product Photo
-    <input type="file" id="photo" accept="image/*">
-    <img id="preview" class="preview">
+
+📸 Select Product Photo
+
+<input type="file" id="photo" accept="image/*">
+
+<img id="preview" class="preview">
+
 </div>
 
+
 <label>Product Name</label>
-<input type="text" id="name" placeholder="Example: Dragon Print T-Shirt">
+
+<input
+type="text"
+id="name"
+placeholder="Example: Dragon Print T-Shirt">
+
 
 <label>Price (Rs.)</label>
-<input type="number" id="price" placeholder="750">
+
+<input
+type="number"
+id="price"
+placeholder="750">
+
 
 <label>Stock</label>
-<input type="number" id="stock" placeholder="12">
+
+<input
+type="number"
+id="stock"
+placeholder="12">
+
 
 <label>Category</label>
+
 <select id="category">
-    <option>T-Shirt</option>
-    <option>Shirt</option>
-    <option>Pants</option>
-    <option>Shoes</option>
-    <option>Kids</option>
-    <option>Ladies</option>
-    <option>Other</option>
+
+<option>T-Shirt</option>
+<option>Shirt</option>
+<option>Pants</option>
+<option>Shoes</option>
+<option>Kids</option>
+<option>Ladies</option>
+<option>Other</option>
+
 </select>
 
+
 <label>Description</label>
-<textarea id="description"
+
+<textarea
+id="description"
 placeholder="Product details..."></textarea>
 
+
 <label>TikTok / Video Link</label>
-<input type="url" id="video"
+
+<input
+type="url"
+id="video"
 placeholder="https://vt.tiktok.com/...">
 
-<button onclick="addProduct()">
+
+<button id="addButton" onclick="addProduct()">
     ➕ ADD PRODUCT
 </button>
 
+<div id="status" class="status"></div>
+
 </div>
+
 
 <div class="card">
 
 <h2>📦 Product Management</h2>
 
 <p style="color:#aaa;margin-top:10px;">
-Add, edit, delete and update stock from your mobile.
+Products are saved directly to Supabase.
 </p>
 
+<button class="logout" onclick="logout()">
+    🚪 LOGOUT
+</button>
+
 </div>
+
+</div>
+
 
 <a href="index.html" class="back">
     ← Back to Website
@@ -178,43 +270,384 @@ Add, edit, delete and update stock from your mobile.
 
 </div>
 
+
 <script>
 
-const photo = document.getElementById("photo");
-const preview = document.getElementById("preview");
+/* ================================
+   SUPABASE CONNECTION
+================================ */
+
+const SUPABASE_URL =
+"https://hdzopnaeklfbdnfcjofo.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_VYvHYBjYJB-tRHkaNFlWhA_0MnCcoL7";
+
+const supabaseClient =
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+/* ================================
+   ELEMENTS
+================================ */
+
+const photo =
+document.getElementById("photo");
+
+const preview =
+document.getElementById("preview");
+
+
+/* ================================
+   PHOTO PREVIEW
+================================ */
 
 photo.addEventListener("change", function(){
 
     const file = this.files[0];
 
     if(file){
-        preview.src = URL.createObjectURL(file);
+
+        preview.src =
+        URL.createObjectURL(file);
+
         preview.style.display = "block";
     }
 
 });
 
-function addProduct(){
 
-    const name = document.getElementById("name").value;
-    const price = document.getElementById("price").value;
-    const stock = document.getElementById("stock").value;
+/* ================================
+   LOGIN
+================================ */
 
-    if(!name || !price || !stock){
+async function login(){
 
-        alert("Please fill Product Name, Price and Stock.");
+    const email =
+    document.getElementById("email").value.trim();
+
+    const password =
+    document.getElementById("password").value;
+
+    const box =
+    document.getElementById("loginStatus");
+
+    if(!email || !password){
+
+        showMessage(
+            box,
+            "Please enter email and password.",
+            false
+        );
 
         return;
     }
 
-    alert(
-        "Product information ready!\\n\\n" +
-        "Name: " + name +
-        "\\nPrice: Rs. " + price +
-        "\\nStock: " + stock
-    );
+
+    const { data, error } =
+    await supabaseClient.auth.signInWithPassword({
+
+        email: email,
+        password: password
+
+    });
+
+
+    if(error){
+
+        showMessage(
+            box,
+            error.message,
+            false
+        );
+
+        return;
+    }
+
+
+    document.getElementById("loginBox")
+    .style.display = "none";
+
+    document.getElementById("adminPanel")
+    .style.display = "block";
 
 }
+
+
+/* ================================
+   CHECK LOGIN
+================================ */
+
+async function checkLogin(){
+
+    const {
+        data: { session }
+    } =
+    await supabaseClient.auth.getSession();
+
+
+    if(session){
+
+        document.getElementById("loginBox")
+        .style.display = "none";
+
+        document.getElementById("adminPanel")
+        .style.display = "block";
+
+    }
+
+}
+
+
+/* ================================
+   ADD PRODUCT
+================================ */
+
+async function addProduct(){
+
+    const name =
+    document.getElementById("name")
+    .value.trim();
+
+    const price =
+    document.getElementById("price")
+    .value;
+
+    const stock =
+    document.getElementById("stock")
+    .value;
+
+    const category =
+    document.getElementById("category")
+    .value;
+
+    const description =
+    document.getElementById("description")
+    .value.trim();
+
+    const video =
+    document.getElementById("video")
+    .value.trim();
+
+    const file =
+    photo.files[0];
+
+    const button =
+    document.getElementById("addButton");
+
+    const status =
+    document.getElementById("status");
+
+
+    if(!name || !price || !stock){
+
+        showMessage(
+            status,
+            "Please fill Product Name, Price and Stock.",
+            false
+        );
+
+        return;
+    }
+
+
+    button.disabled = true;
+
+    button.innerText =
+    "⏳ Uploading...";
+
+
+    try{
+
+        let imageUrl = null;
+
+
+        /* =========================
+           UPLOAD PHOTO
+        ========================= */
+
+        if(file){
+
+            const extension =
+            file.name.split(".").pop();
+
+            const fileName =
+            Date.now() +
+            "-" +
+            Math.random()
+            .toString(36)
+            .substring(2) +
+            "." +
+            extension;
+
+
+            const filePath =
+            fileName;
+
+
+            const { error: uploadError } =
+            await supabaseClient
+            .storage
+            .from("Products")
+            .upload(
+                filePath,
+                file
+            );
+
+
+            if(uploadError){
+
+                throw uploadError;
+
+            }
+
+
+            const { data: publicData } =
+            supabaseClient
+            .storage
+            .from("Products")
+            .getPublicUrl(filePath);
+
+
+            imageUrl =
+            publicData.publicUrl;
+
+        }
+
+
+        /* =========================
+           SAVE PRODUCT
+        ========================= */
+
+        const { error: insertError } =
+        await supabaseClient
+        .from("products")
+        .insert({
+
+            name: name,
+
+            category: category,
+
+            price: Number(price),
+
+            stock: Number(stock),
+
+            image_url: imageUrl,
+
+            tiktok_url: video || null,
+
+            description: description || null,
+
+            is_active: true
+
+        });
+
+
+        if(insertError){
+
+            throw insertError;
+
+        }
+
+
+        showMessage(
+            status,
+            "✅ Product added successfully!",
+            true
+        );
+
+
+        /* =========================
+           CLEAR FORM
+        ========================= */
+
+        document.getElementById("name")
+        .value = "";
+
+        document.getElementById("price")
+        .value = "";
+
+        document.getElementById("stock")
+        .value = "";
+
+        document.getElementById("description")
+        .value = "";
+
+        document.getElementById("video")
+        .value = "";
+
+        photo.value = "";
+
+        preview.src = "";
+
+        preview.style.display = "none";
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            status,
+            "❌ " + error.message,
+            false
+        );
+
+    }
+
+
+    button.disabled = false;
+
+    button.innerText =
+    "➕ ADD PRODUCT";
+
+}
+
+
+/* ================================
+   LOGOUT
+================================ */
+
+async function logout(){
+
+    await supabaseClient.auth.signOut();
+
+    location.reload();
+
+}
+
+
+/* ================================
+   MESSAGE
+================================ */
+
+function showMessage(
+    element,
+    message,
+    success
+){
+
+    element.innerText =
+    message;
+
+    element.className =
+    "status " +
+    (success ? "success" : "error");
+
+    element.style.display =
+    "block";
+
+}
+
+
+/* ================================
+   START
+================================ */
+
+checkLogin();
 
 </script>
 
